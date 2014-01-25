@@ -1,5 +1,13 @@
 begin 1game_inside_teleport
 
+
+
+
+
+;================ТЫ ПОЙДЕШЬ В МГААЗИН!??!?!==========
+
+
+
 float timer
 short ready
  
