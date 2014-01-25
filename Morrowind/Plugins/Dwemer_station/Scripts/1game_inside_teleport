@@ -1,5 +1,5 @@
 begin 1game_inside_teleport
- 456
+
 float timer
 short ready
  
