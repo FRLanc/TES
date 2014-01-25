@@ -1,0 +1,41 @@
+begin 1game_inside_teleport
+ 
+float timer
+short ready
+ 
+if ( MenuMode == 1 )
+        return
+endif
+ 
+if ( OnActivate == 1 )
+        if ( "1game_energy" == 0 )
+                messagebox "Ничего не происходит, кажется нет питания"
+                return
+        elseif ( "1game_energy" == 1 )
+                set ready to 1
+                return
+        endif
+endif
+ 
+if ( ready == 1 )
+        set timer to ( timer + GetSecondsPassed )
+        if ( timer < 2 )
+                move z 50
+                rotate z 180
+        elseif ( timer < 3 )
+                set timer to 0
+                set ready to 2
+                messagebox "Готов. Для телепортации встаньте на платформу"
+                set "1game_ready" to 1
+        endif
+endif
+ 
+if ( ready == 2 )
+        set timer to ( timer + GetSecondsPassed )
+        if (timer > 30 )
+                set timer to 0
+                SetAtStart
+        endif
+endif
+ 
+end
