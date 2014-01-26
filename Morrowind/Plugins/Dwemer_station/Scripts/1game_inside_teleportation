@@ -39,6 +39,7 @@ elseif ( state == 2 )
 			Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Телепортации"
 				set "1game_ready" to 0
 	endif
+	endif
 	set wait to 1.0
 	set state to 0
 	set button to 0
