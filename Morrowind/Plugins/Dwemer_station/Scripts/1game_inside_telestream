@@ -10,7 +10,7 @@ if ( MenuMode == 1 )
   return
 endif
 
-if ( State == 1 )
+if ( state == 1 )
   set working to 1
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
