@@ -1,34 +1,5 @@
 begin 1game_inside_teleport
 
-
-
-
-
-
-if ( CellChanged == 0 )
-if ( GetSoundPlaying "BM pipe large" == 0 )
-PlayLoopSound3DVP "1game_teleportator", 1.0, 1.0
-endif
-endif
-01:15:00	
-вот это нужно вместить в момент поездки вверх
-
-
-
-
-if ( CellChanged == 0 )
-if ( GetSoundPlaying "BM pipe medium" == 0 )
-PlayLoopSound3DVP "1game_teleportator", 1.0, 1.0
-endif
-endif
-и вот это во время поездки вниз
-
-
-
-
-
-
-
 float timer
 short ready
  
@@ -51,6 +22,11 @@ endif
 if ( ready == 1 )
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
+    if ( CellChanged == 0 )
+      if ( GetSoundPlaying "BM pipe large" == 0 )
+        PlayLoopSound3DVP "1game_teleportator", 1.0, 1.0
+      endif
+    endif
     move z -50
     rotate z 180
   elseif ( timer < 3 )
@@ -72,6 +48,11 @@ endif
 if ( ready == 3 )
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
+    if ( CellChanged == 0 )
+      if ( GetSoundPlaying "BM pipe medium" == 0 )
+        PlayLoopSound3DVP "1game_teleportator", 1.0, 1.0
+      endif
+    endif
     move z 50
     rotate z -180
   elseif ( timer < 3 )
