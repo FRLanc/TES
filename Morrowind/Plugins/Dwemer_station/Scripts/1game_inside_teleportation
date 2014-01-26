@@ -8,21 +8,20 @@ short state
 if ( state == 0 )
 	if ( GetStandingPC == 1 )
  		set state to 1
+	endif
 endif
 
 if ( state == 1 )
-	set state to 2
-		Messagebox "Доступная телепортация" "Башня" "Зал телепортации" "Отмена"
-			set button to GetButtonPressed
-		if ( button == 0 )
-  			"1game_door_tower"->activate
-					set state to 0
-  		if ( button == 1 )
-		if ( button == 2 )
-return
+	Messagebox "Доступная телепортация:" "Башня" "Зал телепортации" "Отмена"
+	
+	set button to GetButtonPressed
+	if ( button == 0 )
+		"1game_door_tower"->activate
+	if ( button == 1 )
+;тут чего то не хватает...
+	endif
+	set state to 0
+	set button to 0
 endif
-endif
-endif
-endif
-endif
+
 end
