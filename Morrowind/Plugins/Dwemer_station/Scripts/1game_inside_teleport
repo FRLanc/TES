@@ -22,6 +22,7 @@ if ( "1game_get_teleported" == 1 );данный блок должен подни
     set ready to 3
     set "1game_get_out" to 0
     set "1game_get_teleported" to 0
+  endif
 endif
 
 if ( OnActivate == 1 );Проверяет если есть поток электричества и запускает подьем
