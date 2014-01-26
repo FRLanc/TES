@@ -5,7 +5,6 @@ begin 1game_inside_teleport
 float timer
 short ready
 short doonce
-short music 
 
 if ( MenuMode == 1 )
   return
@@ -13,10 +12,10 @@ endif
 
 if ( GetStandingPC == 1 )
  if ( ready > 0 )
-  return
-  endif
+return
 endif
- 
+endif
+
 if ( OnActivate == 1 )
   if ( ready == 0 )
     if ( "1game_energy" == 0 )
@@ -29,23 +28,13 @@ if ( OnActivate == 1 )
   endif
 endif
 
-if ( music == 1 )
-  PlayLoopSound3DVP "BM pipe medium", 1.0, 1.0
-  set music to 0
-endif
-
-if ( music == 2 )
-  PlayLoopSound3DVP "BM pipe large", 1.0, 1.0 
-  set music to 0
-endif
-
 if ( ready == 1 )
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
     if ( doonce == 0 )
-      set "1game_ready" to 1
       set doonce to 1
-      set music to 2
+      set "1game_ready" to 1
+      playsound "BM pipe large"
     endif
     move z -140
     rotate z 180
@@ -72,7 +61,7 @@ if ( ready == 3 )
     if ( doonce == 0 )
       set "1game_ready" to 0
       set doonce to 1
-      set music to 1
+      playsound "BM pipe medium"
     endif
     move z 140
     rotate z -180
