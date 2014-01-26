@@ -38,7 +38,7 @@ if ( working == 1 )
   return
 endif
 
-if ( "1game_ready" == 1 )
+if ( "1game_ready" > 0 )
   if ( state == 0 )
     set state to 1
   endif
