@@ -1,0 +1,49 @@
+Begin 1game_dwrv_crank_script
+ 
+short progress
+float timer
+ 
+if ( MenuMode == 1 )
+        return
+endif
+ 
+if ( OnActivate == 1 )
+        if ( "1game_crystal_insert" == 0 )
+                messagebox "Ничего не происходит"
+                return
+        endif
+        if ( progress == 0 )
+                set progress to 1
+                set timer to 0
+        elseif ( progress == 2 )
+                set progress to -1
+                set timer to 0
+        endif
+endif
+ 
+if ( progress == 0 )
+        return
+elseif ( progress == 2 )
+        return
+endif
+ 
+if ( timer < 22 )
+        set timer to ( timer + GetSecondsPassed )
+        if ( progress == 1 )
+                "_g2_dwrv_stonedoor_02"->rotateworld z -2.136
+                "_g2_dwrv_stonedoor_01"->rotateworld z 1.95
+                "_g2_dwrv_stonedoor_03"->rotateworld z 1.8
+                "_g2_dwrv_stonedoor_04"->rotateworld z -1.8
+                modwaterlevel -0.3
+        else
+                "_g2_dwrv_stonedoor_02"->rotateworld z 2.136
+                "_g2_dwrv_stonedoor_01"->rotateworld z -1.95
+                "_g2_dwrv_stonedoor_03"->rotateworld z -1.8
+                "_g2_dwrv_stonedoor_04"->rotateworld z 1.8
+                modwaterlevel 0.3
+        endif
+else
+        set progress to ( progress + 1 )
+endif
+ 
+end
