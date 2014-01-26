@@ -17,7 +17,7 @@ if ( GetStandingPC == 1 )
 endif
 
 if ( "1game_get_teleported" == 1 )
-  set ready to 2
+  set ready to 1
 endif
 
 if ( OnActivate == 1 )
