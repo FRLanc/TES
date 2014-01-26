@@ -24,13 +24,13 @@ if ( OnActivate == 1 )
 endif
 
 if ( music == 1 )
-      PlayLoopSound3DVP "BM pipe medium", 1.0, 1.0
-	set music to 0
+  PlayLoopSound3DVP "BM pipe medium", 1.0, 1.0
+  set music to 0
 endif
 
 if ( music == 2 )
-      PlayLoopSound3DVP "BM pipe large", 1.0, 1.0 
-	set music to 0
+  PlayLoopSound3DVP "BM pipe large", 1.0, 1.0 
+  set music to 0
 endif
 
 if ( ready == 1 )
@@ -39,7 +39,7 @@ if ( ready == 1 )
     if ( doonce == 0 )
       set "1game_ready" to 1
       set doonce to 1
-	 set music to 2
+      set music to 2
     endif
     move z -140
     rotate z 180
@@ -65,9 +65,8 @@ if ( ready == 3 )
   if ( timer < 2 )
     if ( doonce == 0 )
       set "1game_ready" to 0
-	 set music to 2
       set doonce to 1
-	 set music to 1
+      set music to 1
     endif
     move z 140
     rotate z -180
