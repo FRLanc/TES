@@ -1,6 +1,6 @@
 begin 1game_inside_telestream
 
-;Поднимает стержни вместе с плитой из 1game_inside_teleporter
+;Поднимает стержни вместе с плитой из 1game_inside_teleport
 
 float timer
 short state
