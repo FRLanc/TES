@@ -17,7 +17,9 @@ endif
 
 if ( state == 1 )
 	Messagebox "Доступная телепортация:" "Башня" "Зал телепортации" "Отмена"
+	set state to 2
 	return
+elseif ( state == 2 )
 	set button to GetButtonPressed
 	if ( button == 0 )
 		"1game_door_tower"->activate
