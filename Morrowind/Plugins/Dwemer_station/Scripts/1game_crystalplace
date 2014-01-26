@@ -1,21 +1,19 @@
 begin 1game_crystalplace
 
 ;Меняет глобальную переменную для возможности слить воду
+
 short state
 
 if ( OnActivate == 1 )
 	if ( state == 0 )
 		if ( Player->GetItemCount "1game_energy_crystal_small" >= 1 )
 			set "1game_crystal_insert" to 1
-				player->removeitem "1game_energy_crystal_small" 1
-					set state to 1
-	else
-		messagebox "Это отверстие нуждается в каком-то предмете"
+			player->removeitem "1game_energy_crystal_small" 1
+			set state to 1
+		else
+			messagebox "Это отверстие нуждается в каком-то предмете"
+		endif
 	endif
-endif
-
-if ( state == 1 )
-	return
 endif
 
 end
