@@ -10,17 +10,21 @@ if ( MenuMode == 1 )
   return
 endif
 
-if ( GetStandingPC == 1 )
+if ( GetStandingPC == 1 );Если игроку захочется залезть на платформу, её заклинит
  if ( ready > 0 )
   return
  endif
 endif
 
-if ( "1game_get_teleported" == 1 )
-  set ready to 1
+if ( "1game_get_teleported" == 1 );данный блок должен поднимать панель наверх, после телепортации
+  set "1game_get_teleported" to 0 ;и начать опускать вниз сразу, когда игрок сойдет с платформы
+    move z 140
+  if ( "1game_get_out" == 1 )
+    set ready to 3
+    set "1game_get_out" to 0
 endif
 
-if ( OnActivate == 1 )
+if ( OnActivate == 1 );Проверяет если есть поток электричества и запускает подьем
   if ( ready == 0 )
     if ( "1game_energy" == 0 )
       messagebox "Ничего не происходит, кажется нет питания"
@@ -32,7 +36,7 @@ if ( OnActivate == 1 )
   endif
 endif
 
-if ( ready == 1 )
+if ( ready == 1 );Поднимает панель вверх для доступа на платформу
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
     if ( doonce == 0 )
@@ -51,7 +55,7 @@ if ( ready == 1 )
   endif
 endif
  
-if ( ready == 2 )
+if ( ready == 2 );Ждет 30 секунд перед закрытием платформы
   set timer to ( timer + GetSecondsPassed )
   if (timer > 30 )
     set timer to 0
@@ -59,7 +63,7 @@ if ( ready == 2 )
   endif
 endif
 
-if ( ready == 3 )
+if ( ready == 3 );Начинает опускать платформу
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
     if ( doonce == 0 )
