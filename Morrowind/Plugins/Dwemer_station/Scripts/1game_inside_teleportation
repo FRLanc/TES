@@ -29,10 +29,12 @@ if ( state == 1 )
 	set state to 2
 elseif ( state == 2 )
 	set button to GetButtonPressed
-	if ( button == 0 )
-		"1game_door_tower"->activate
-	elseif ( button == 1 )
-;тут чего то не хватает...
+        if ( button == 0 )
+              playsound "conjuration hit"
+			Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня"
+        elseif ( button == 1 )
+              playsound "conjuration hit"
+			Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Телепортации"
 	endif
 	set wait to 1.0
 	set state to 0
