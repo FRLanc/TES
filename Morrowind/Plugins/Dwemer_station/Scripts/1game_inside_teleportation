@@ -10,7 +10,7 @@ if ( MenuMode == 1 )
 	return
 endif
 
-if ( wait >= 0.9 )
+if ( wait >= 0.9 );Таймер на повторное открытие мбокса
 	set wait to ( wait + GetSecondsPassed )
 	if ( wait > 3 )
 		set wait to 0
@@ -18,7 +18,7 @@ if ( wait >= 0.9 )
 	return
 endif
 
-if ( state == 0 )
+if ( state == 0 );Когда игрок наступает на платформу, открывается мбокс
 	if ( GetStandingPC == 1 )
 		if( "1game_ready" == 2 )
 			set state to 1
@@ -26,20 +26,28 @@ if ( state == 0 )
 	endif
 endif
 
-if ( state == 1 )
+if ( "1game_get_teleported" == 1 );После телепортации игрока ничего не происходит, пока он не сойдет с платформы
+	if ( GetStandingPC == 1 )
+		return
+	elseif ( GetStandingPC == 0 )
+		set "1game_get_out" to 1
+	endif
+endif
+
+if ( state == 1 );Выбор телепортации
 	Messagebox "Доступная телепортация:" "Башня" "Зал телепортации" "Отмена"
 	set state to 2
 elseif ( state == 2 )
 	set button to GetButtonPressed
         if ( button == 0 )
+        	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-;        	set "1game_ready" to 0
 		set "1game_inside_teleport".timer to 0
 		set "1game_inside_teleport".ready to 3
 		Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня"
         elseif ( button == 1 )
+         	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-;        	set "1game_ready" to 0
 		set "1game_inside_teleport".timer to 0
 		set "1game_inside_teleport".ready to 3
 		Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Телепортации"
