@@ -16,7 +16,7 @@ if ( GetStandingPC == 1 )
  endif
 endif
 
-if ( "1game_getteleported" == 1 )
+if ( "1game_get_teleported" == 1 )
   set ready to 2
 endif
 
