@@ -12,8 +12,12 @@ endif
 
 if ( GetStandingPC == 1 )
  if ( ready > 0 )
-return
+  return
+ endif
 endif
+
+if ( "1game_getteleported" == 1 )
+  set ready to 2
 endif
 
 if ( OnActivate == 1 )
