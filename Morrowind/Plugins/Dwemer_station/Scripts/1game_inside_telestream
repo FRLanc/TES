@@ -14,7 +14,7 @@ if ( state == 1 )
   set working to 1
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
-    move z 10
+    move z 30
   elseif ( timer < 3 )
     set timer to 0
     set state to 2
@@ -26,7 +26,7 @@ if ( state == 3 )
   set working to 1
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
-    move z -10
+    move z -30
   elseif ( timer < 3 )
     set timer to 0
     set state to 0
