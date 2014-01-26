@@ -10,6 +10,12 @@ short music
 if ( MenuMode == 1 )
   return
 endif
+
+if ( GetStandingPC == 1 )
+ if ( ready > 0 )
+  return
+  endif
+endif
  
 if ( OnActivate == 1 )
   if ( ready == 0 )
