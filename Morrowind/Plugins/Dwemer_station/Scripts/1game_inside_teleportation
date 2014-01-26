@@ -44,6 +44,8 @@ elseif ( state == 2 )
 		set "1game_inside_teleport".ready to 3
 		Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Телепортации"
 	endif
+	elseif ( button == 2 )
+	return
 	set wait to 1.0
 	set state to 0
 	set button to 0
