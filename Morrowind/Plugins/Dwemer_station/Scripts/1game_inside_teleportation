@@ -6,15 +6,8 @@ short button
 short state
 float wait
 
-short doonce
-
 if ( MenuMode == 1 )
 	return
-endif
-
-if ( doonce == 0 )
-messagebox "MenuMode off"
-set doonce to 10
 endif
 
 if ( wait >= 0.9 )
@@ -26,21 +19,9 @@ if ( wait >= 0.9 )
 endif
 
 if ( state == 0 )
-	if ( doonce == 10 )
-	MessageBox "State applied"
-	set doonce to 1
-	endif
 	if ( GetStandingPC == 1 )
-		if ( doonce == 1 )
-		MessageBox"Player detected"
-		set doonce to 2
-		endif
 		if( "1game_ready" == 2 )
-			if ( doonce == 2 ) 
-			MessageBox "Ready"
-			set doonce to 3
-			endif
-	 		set state to 1
+			set state to 1
 	 	endif
 	endif
 endif
