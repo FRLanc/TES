@@ -5,6 +5,10 @@ begin 1game_inside_teleportation
 short button
 short state
 
+if ( MenuMode == 1 )
+	return
+endif
+
 if ( state == 0 )
 	if ( GetStandingPC == 1 )
  		set state to 1
@@ -13,7 +17,7 @@ endif
 
 if ( state == 1 )
 	Messagebox "Доступная телепортация:" "Башня" "Зал телепортации" "Отмена"
-	
+	return
 	set button to GetButtonPressed
 	if ( button == 0 )
 		"1game_door_tower"->activate
