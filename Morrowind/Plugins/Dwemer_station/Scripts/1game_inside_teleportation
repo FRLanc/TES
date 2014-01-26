@@ -1,0 +1,28 @@
+begin 1game_inside_teleportation
+
+;Перемещает игрока по станции
+
+short button
+short state
+
+if ( state == 0 )
+	if ( GetStandingPC == 1 )
+ 		set state to 1
+endif
+
+if ( state == 1 )
+	set state to 2
+		Messagebox "Доступная телепортация" "Башня" "Зал телепортации" "Отмена"
+			set button to GetButtonPressed
+		if ( button == 0 )
+  			"1game_door_tower"->activate
+					set state to 0
+  		if ( button == 1 )
+		if ( button == 2 )
+return
+endif
+endif
+endif
+endif
+endif
+end
