@@ -4,8 +4,17 @@ begin 1game_inside_teleportation
 
 short button
 short state
+float wait
 
 if ( MenuMode == 1 )
+	return
+endif
+
+if ( wait >= 1 )
+	set wait to ( wait + GetSecondsPassed )
+	if ( wait > 3 )
+		set wait to 0
+	endif
 	return
 endif
 
@@ -25,6 +34,7 @@ elseif ( state == 2 )
 	elseif ( button == 1 )
 ;тут чего то не хватает...
 	endif
+	set wait to 1
 	set state to 0
 	set button to 0
 endif
