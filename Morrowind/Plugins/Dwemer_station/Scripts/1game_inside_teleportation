@@ -21,7 +21,7 @@ if ( state == 1 )
 	set button to GetButtonPressed
 	if ( button == 0 )
 		"1game_door_tower"->activate
-	if ( button == 1 )
+	elseif ( button == 1 )
 ;тут чего то не хватает...
 	endif
 	set state to 0
