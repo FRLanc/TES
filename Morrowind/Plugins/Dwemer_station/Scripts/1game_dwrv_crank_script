@@ -1,4 +1,6 @@
 Begin 1game_dwrv_crank_script
+
+;Сливает и набирает воду в шлюзовом отсеке
  
 short progress
 float timer
