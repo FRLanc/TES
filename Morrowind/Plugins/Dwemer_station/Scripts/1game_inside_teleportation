@@ -33,15 +33,15 @@ elseif ( state == 2 )
 	set button to GetButtonPressed
         if ( button == 0 )
         	playsound "conjuration hit"
-        	set "1game_ready" to 0
-;		set "1game_inside_teleport".timer to 0
-;		set "1game_inside_teleport".ready to 3
+;        	set "1game_ready" to 0
+		set "1game_inside_teleport".timer to 0
+		set "1game_inside_teleport".ready to 3
 		Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня"
         elseif ( button == 1 )
         	playsound "conjuration hit"
-        	set "1game_ready" to 0
-;		set "1game_inside_teleport".timer to 0
-;		set "1game_inside_teleport".ready to 3
+;        	set "1game_ready" to 0
+		set "1game_inside_teleport".timer to 0
+		set "1game_inside_teleport".ready to 3
 		Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Телепортации"
 	endif
 	set wait to 1.0
