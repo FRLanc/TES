@@ -12,6 +12,8 @@ if ( OnActivate == 1 )
 			set state to 1
 		else
 			messagebox "Это отверстие нуждается в каком-то предмете"
+		elseif ( state == 1 )
+			messagebox "Энергокристал уже на месте"
 		endif
 	endif
 endif
