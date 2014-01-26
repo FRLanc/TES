@@ -25,6 +25,7 @@ if ( state == 0 )
 endif
 
 if ( state == 1 )
+  if( "1game_ready" == 1 )
 	Messagebox "Доступная телепортация:" "Башня" "Зал телепортации" "Отмена"
 	set state to 2
 elseif ( state == 2 )
@@ -32,9 +33,11 @@ elseif ( state == 2 )
         if ( button == 0 )
               playsound "conjuration hit"
 			Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня"
+				set "1game_ready" to 0
         elseif ( button == 1 )
               playsound "conjuration hit"
 			Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Телепортации"
+				set "1game_ready" to 0
 	endif
 	set wait to 1.0
 	set state to 0
