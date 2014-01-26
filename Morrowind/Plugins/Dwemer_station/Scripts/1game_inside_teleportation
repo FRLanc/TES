@@ -12,6 +12,11 @@ if ( MenuMode == 1 )
 	return
 endif
 
+if ( doonce == 0 )
+messagebox "MenuMode off"
+set doonce to 10
+endif
+
 if ( wait >= 0.9 )
 	set wait to ( wait + GetSecondsPassed )
 	if ( wait > 3 )
@@ -21,7 +26,7 @@ if ( wait >= 0.9 )
 endif
 
 if ( state == 0 )
-	if ( doonce == 0 )
+	if ( doonce == 10 )
 	MessageBox "State applied"
 	set doonce to 1
 	endif
