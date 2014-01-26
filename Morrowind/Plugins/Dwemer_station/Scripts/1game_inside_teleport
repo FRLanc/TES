@@ -36,6 +36,7 @@ if ( ready == 1 )
     set timer to 0
     set ready to 2
     set doonce to 0
+    set "1game_ready" to 2
     messagebox "Готов. Для телепортации встаньте на платформу"
   endif
 endif
