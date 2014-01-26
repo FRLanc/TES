@@ -48,6 +48,7 @@ if ( ready == 3 )
   elseif ( timer < 3 )
     set timer to 0
     set ready to 0
+    set "1game_ready" to 0
   endif
 endif
  
