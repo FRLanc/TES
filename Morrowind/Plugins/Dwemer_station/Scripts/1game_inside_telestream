@@ -1,0 +1,39 @@
+begin 1game_inside_telestream
+
+;Поднимает стержни вместе с плитой из 1game_inside_teleporter
+
+float timer
+short state
+
+if ( MenuMode == 1 )
+ return
+endif
+
+if ( "1game_ready" == 1 )
+ set state to 1
+endif
+
+if ( "1game_ready" == 0 )
+ set state to 0
+endif
+
+if ( State == 1 )
+ set timer to ( timer + GetSecondsPassed )
+ if ( timer < 2 )
+  move z 10
+  elseif ( timer < 3 )
+   set timer to 0
+   set state to 2
+endif
+endif
+
+if ( state == 0 )
+  set timer to ( timer + GetSecondsPassed )
+  if ( timer < 2 )
+  move z -10
+  elseif ( timer < 3 )
+  set timer to 0
+  set state to 2
+endif
+endif
+end
