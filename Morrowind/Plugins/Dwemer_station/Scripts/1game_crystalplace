@@ -3,11 +3,12 @@ begin 1game_crystalplace
 ;Меняет глобальную переменную для возможности слить воду
 
 if ( OnActivate == 1 )
-if ( Player->GetItemCount "repair_prongs" > 1 )
-set "1game_crystal_insert" to 1
-			player->removeitem "repair_prongs" 1
+	if ( Player->GetItemCount "repair_prongs" >= 1 )
+		set "1game_crystal_insert" to 1
+		player->removeitem "repair_prongs" 1
 	else
-	messagebox "Это отверстие нуждается в каком-то предмете"
+		messagebox "Это отверстие нуждается в каком-то предмете"
+	endif
 endif
-endif
+
 end
