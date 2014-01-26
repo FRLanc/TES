@@ -4,6 +4,7 @@ begin 1game_inside_teleport
 
 float timer
 short ready
+short doonce
  
 if ( MenuMode == 1 )
   return
@@ -24,18 +25,18 @@ endif
 if ( ready == 1 )
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
-    if ( CellChanged == 0 )
-      if ( GetSoundPlaying "BM pipe medium" == 0 )
-        PlayLoopSound3DVP "BM pipe medium", 1.0, 1.0
-      endif
+    if ( doonce == 0 )
+      set "1game_ready" to 1
+      PlayLoopSound3DVP "BM pipe medium", 1.0, 1.0
+      set doonce to 1
     endif
     move z -140
     rotate z 180
   elseif ( timer < 3 )
     set timer to 0
     set ready to 2
+    set doonce to 0
     messagebox "Готов. Для телепортации встаньте на платформу"
-    set "1game_ready" to 1
   endif
 endif
  
@@ -50,17 +51,17 @@ endif
 if ( ready == 3 )
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
-    if ( CellChanged == 0 )
-      if ( GetSoundPlaying "BM pipe large" == 0 )
-        PlayLoopSound3DVP "BM pipe large", 1.0, 1.0
-      endif
+    if ( doonce == 0 )
+      set "1game_ready" to 0
+      PlayLoopSound3DVP "BM pipe large", 1.0, 1.0
+      set doonce to 1
     endif
     move z 140
     rotate z -180
   elseif ( timer < 3 )
     set timer to 0
     set ready to 0
-    set "1game_ready" to 0
+    set doonce to 0
   endif
 endif
  
