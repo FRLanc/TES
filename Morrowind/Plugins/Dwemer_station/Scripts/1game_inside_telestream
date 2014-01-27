@@ -10,6 +10,11 @@ if ( MenuMode == 1 )
   return
 endif
 
+if ( "1game_get_teleported" == 1 )
+  setpos z "!!!"
+  set state to 2
+endif
+
 if ( state == 1 )
   set working to 1
   set timer to ( timer + GetSecondsPassed )
