@@ -31,16 +31,19 @@ endif
 ;1game_opened_room - означает разные наборы точек телепортации: 0 - default, 1 - ...
 if ( state == 1 )
 	if ( "1game_opened_room" == 0 )
-		Messagebox "Доступная телепортация:" "Башня" "Зал телепортации" "Отмена"
-		set state to 200
-		return
+		if ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
+			Messagebox "Доступная телепортация:" "Башня" "Отмена"
+			set state to 2001
+			return
+		elseif ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
+			Messagebox "Доступная телепортация:" "Холл" "Отмена"
 	endif
 endif
 
 ;вариант 00 - default: 2 точки (совпадают с полным набором) и отмена (не совпадает, надо переназначить)
-if ( state == 200 )
+if ( state == 2001 )
 	set button to GetButtonPressed
-        if ( button == 2 )
+        if ( button == 1 )
         	set button to 10
         endif
         set state to 3
