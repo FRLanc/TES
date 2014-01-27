@@ -76,12 +76,3 @@ if ( ready == 3 );Начинает опускать платформу
 endif
  
 end
-
-if ( "1game_get_teleported" == 1 );данный блок должен поднимать панель наверх, после телепортации
-    move z 140;и начать опускать вниз сразу, когда игрок сойдет с платформы
-  if ( "1game_get_out" == 1 )
-    set ready to 3
-    set "1game_get_out" to 0
-    set "1game_get_teleported" to 0
-  endif
-endif
