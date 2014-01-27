@@ -1,5 +1,5 @@
 begin 1game_energy_generator
-
+;ШТА???
 short state
 
 if ( OnActivate == 1 )
