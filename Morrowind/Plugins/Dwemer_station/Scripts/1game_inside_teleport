@@ -1,7 +1,5 @@
 begin 1game_inside_teleport
 
-;Поднимает платформу наверх и позволяет игроку телепортироваться по станции
-
 float timer
 short ready
 short doonce
@@ -10,34 +8,38 @@ if ( MenuMode == 1 )
   return
 endif
 
-if ( GetStandingPC == 1 );Если игроку захочется залезть на платформу, её заклинит
- if ( ready > 0 )
-  return
- endif
+if ( "1game_get_teleported" == 1 )
+  setpos z "!!!"
+  set "1game_ready" to 2
+  set ready to 2
+  set "1game_get_teleported" to 0
 endif
+  
 
-if ( "1game_get_teleported" == 1 );данный блок должен поднимать панель наверх, после телепортации
-    move z 140;и начать опускать вниз сразу, когда игрок сойдет с платформы
-  if ( "1game_get_out" == 1 )
+if ( ready == 2 )
+  set timer to ( timer + GetSecondsPassed )
+  if (timer > 30 )
+    set timer to 0
     set ready to 3
-    set "1game_get_out" to 0
-    set "1game_get_teleported" to 0
   endif
 endif
 
-if ( OnActivate == 1 );Проверяет если есть поток электричества и запускает подьем
+if ( GetStandingPC == 1 )
+  return
+endif
+
+if ( OnActivate == 1 )
   if ( ready == 0 )
     if ( "1game_energy" == 0 )
-      messagebox "Ничего не происходит, кажется нет питания"
+      messagebox "Ничего не происходит, кажется, нет питания"
       return
     elseif ( "1game_energy" == 1 )
       set ready to 1
-      return
     endif
   endif
 endif
 
-if ( ready == 1 );Поднимает панель вверх для доступа на платформу
+if ( ready == 1 )
   set timer to ( timer + GetSecondsPassed )
   if ( timer < 2 )
     if ( doonce == 0 )
@@ -49,18 +51,10 @@ if ( ready == 1 );Поднимает панель вверх для доступ
     rotate z 180
   elseif ( timer < 3 )
     set timer to 0
-    set ready to 2
     set doonce to 0
     set "1game_ready" to 2
+    set ready to 2
     messagebox "Готов. Для телепортации встаньте на платформу"
-  endif
-endif
- 
-if ( ready == 2 );Ждет 30 секунд перед закрытием платформы
-  set timer to ( timer + GetSecondsPassed )
-  if (timer > 30 )
-    set timer to 0
-    set ready to 3
   endif
 endif
 
@@ -82,3 +76,12 @@ if ( ready == 3 );Начинает опускать платформу
 endif
  
 end
+
+if ( "1game_get_teleported" == 1 );данный блок должен поднимать панель наверх, после телепортации
+    move z 140;и начать опускать вниз сразу, когда игрок сойдет с платформы
+  if ( "1game_get_out" == 1 )
+    set ready to 3
+    set "1game_get_out" to 0
+    set "1game_get_teleported" to 0
+  endif
+endif
