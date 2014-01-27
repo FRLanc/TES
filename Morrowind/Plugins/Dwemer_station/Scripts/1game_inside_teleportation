@@ -1,58 +1,62 @@
 begin 1game_inside_teleportation
 
-;Перемещает игрока по станции
+;Из расчета на 9 точек!!!
 
 short button
 short state
-float wait
 
 if ( MenuMode == 1 )
 	return
 endif
 
-if ( wait >= 0.9 );Таймер на повторное открытие мбокса
-	set wait to ( wait + GetSecondsPassed )
-	if ( wait > 3 )
-		set wait to 0
+if ( GetStandingPC == 0 )
+	if ( "1game_on_platform" == 1 )
+		set "1game_on_platform" to 0
 	endif
-	return
 endif
 
-if ( state == 0 );Когда игрок наступает на платформу, открывается мбокс
+if ( state == 0 )
+	if ( "1game_on_platform" == 1 )
+		return
+	endif
 	if ( GetStandingPC == 1 )
 		if( "1game_ready" == 2 )
 			set state to 1
+			set "1game_on_platform" to 1
 	 	endif
 	endif
 endif
 
-if ( "1game_get_teleported" == 1 );После телепортации игрока ничего не происходит, пока он не сойдет с платформы
-	if ( GetStandingPC == 1 )
+;Тут происходит выбор вариантов телепортации, который зависит от переменной 1game_opened_room
+;1game_opened_room - означает разные наборы точек телепортации: 0 - default, 1 - ...
+if ( state == 1 )
+	if ( "1game_opened_room" == 0 )
+		Messagebox "Доступная телепортация:" "Башня" "Зал телепортации" "Отмена"
+		set state to 200
 		return
-	elseif ( GetStandingPC == 0 )
-		set "1game_get_out" to 1
 	endif
 endif
 
-if ( state == 1 );Выбор телепортации
-	Messagebox "Доступная телепортация:" "Башня" "Зал телепортации" "Отмена"
-	set state to 2
-elseif ( state == 2 )
+;вариант 00 - default: 2 точки (совпадают с полным набором) и отмена (не совпадает, надо переназначить)
+if ( state == 200 )
 	set button to GetButtonPressed
-        if ( button == 0 )
+        if ( button == 2 )
+        	set button to 10
+        endif
+        set state to 3
+endif
+
+;здесь находится полный набор точек телепортации
+if ( state == 3 )
+	if ( button == 0 )
         	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-		set "1game_inside_teleport".timer to 0
-		set "1game_inside_teleport".ready to 3
 		Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня"
         elseif ( button == 1 )
          	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-		set "1game_inside_teleport".timer to 0
-		set "1game_inside_teleport".ready to 3
 		Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Телепортации"
 	endif
-	set wait to 1.0
 	set state to 0
 	set button to 0
 endif
