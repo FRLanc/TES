@@ -10,6 +10,8 @@ endif
 
 if ( "1game_get_teleported" == 1 )
   setpos z "!!!"
+  set timer to 0
+  set doonce to 0
   set "1game_ready" to 2
   set ready to 2
   set "1game_get_teleported" to 0
