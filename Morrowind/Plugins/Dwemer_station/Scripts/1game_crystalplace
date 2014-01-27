@@ -13,7 +13,7 @@ if ( OnActivate == 1 )
 		if ( Player->GetItemCount "1game_energy_crystal_small" >= 1 )
 			set "1game_crystal_insert" to 1
 			player->removeitem "1game_energy_crystal_small" 1
-			playsound "soundname"
+			playsound "Item Weapon Spear Down"
 			"1game_energy_crystal_static"->enable
 			set state to 1
 		else
