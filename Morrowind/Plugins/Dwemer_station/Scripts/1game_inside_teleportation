@@ -51,7 +51,7 @@ if ( state == 3 )
 	if ( button == 0 )
         	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-		Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня"
+		Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня (Мастерская)"
         elseif ( button == 1 )
          	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
