@@ -4,11 +4,17 @@ begin 1game_crystalplace
 
 short state
 
+if ( state == 0 )
+	"1game_energy_crystal_static"->disable
+endif
+
 if ( OnActivate == 1 )
 	if ( state == 0 )
 		if ( Player->GetItemCount "1game_energy_crystal_small" >= 1 )
 			set "1game_crystal_insert" to 1
 			player->removeitem "1game_energy_crystal_small" 1
+			playsound "soundname"
+			"1game_energy_crystal_static"->enable
 			set state to 1
 		else
 			messagebox "Это отверстие нуждается в каком-то предмете"
