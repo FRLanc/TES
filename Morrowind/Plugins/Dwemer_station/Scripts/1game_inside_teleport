@@ -10,15 +10,15 @@ endif
 
 if ( "1game_get_teleported" == 1 )
         if ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
-                setpos z "12413"
+                setpos z "12693"
         elseif ( GetPCCell, "Гелендорф, Зал Ветров (Жизнеобеспечение)" == 1 )
-                setpos z "12426"
+                setpos z "12706"
         elseif ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
-                setpos z "225"
+                setpos z "505"
         elseif ( GetPCCell, "Гелендорф, Зал Телепортации" == 1 )
-                setpos z "15245"
+                setpos z "15525"
         elseif ( GetPCCell, "Гелендорф, Нижний Уровень (Энергообеспечение)" == 1 )
-                setpos z "545"
+                setpos z "825"
         endif
         set timer to 0
         set doonce to 0
