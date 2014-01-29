@@ -1,1 +1,10 @@
-f
+Begin 1game_test
+
+short abc
+
+if ( OnActivate == 1 )
+	set abc to ( abc + 1 )
+	messagebox "%0.f", abc
+endif
+
+End
