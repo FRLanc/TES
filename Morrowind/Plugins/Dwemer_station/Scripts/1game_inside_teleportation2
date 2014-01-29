@@ -4,7 +4,6 @@ short button
 short state
 
 if ( state > 0 )
-        messagebox "1.state=%0.f", state
         if ( state == 20001 )
                 if ( button == 0 )
                         set button to 2
@@ -273,7 +272,6 @@ if ( state > 0 )
         set "1game_inside_teleportation".button to button
         set state to 0
         set button to 0
-        messagebox "2.state=%0.f", state
 endif
 
 end
