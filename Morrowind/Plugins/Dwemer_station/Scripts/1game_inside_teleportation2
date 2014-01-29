@@ -2,6 +2,8 @@ begin 1game_inside_teleportation2
 
 short button
 short state
+set state to "1game_inside_teleportation_state"
+set button to "1game_inside_teleportation_button"
 
 if ( state > 0 )
         if ( state == 20001 )
@@ -269,7 +271,8 @@ if ( state > 0 )
                         set button to 10
                 endif
         endif
-        set "1game_inside_teleportation".button to button
+        set "1game_inside_teleportation_button" to button
+        set "1game_inside_teleportation_state" to 0
         set state to 0
         set button to 0
 endif
