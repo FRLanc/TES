@@ -150,7 +150,7 @@ endif
 if ( state > 10 )
 	set button to GetButtonPressed
 	set "1game_inside_teleportation2".button to button
-	set "1game_inside_teleportation3".state to state
+	set "1game_inside_teleportation2".state to state
         set state to 3
         return
 endif
