@@ -1,6 +1,14 @@
 begin 1game_inside_teleportation
 
-;Из расчета на 9 точек!!!
+;P.S. хол!Л!
+;И надо расставить координаты в полном наборе
+
+;Нумерация точек:
+;1 - Гелендорф, Зал Равновесия (Хол)
+;2 - Гелендорф, Башня (Мастерская)
+;3 - Гелендорф, Нижний Уровень (Энергообеспечение)
+;4 - Гелендорф, Зал Ветров (Жизнеобеспечение)
+;5 - Гелендорф, Зал Телепортации
 
 short button
 short state
@@ -28,37 +36,411 @@ if ( state == 0 )
 endif
 
 ;Тут происходит выбор вариантов телепортации, который зависит от переменной 1game_opened_room
-;1game_opened_room - означает разные наборы точек телепортации: 0 - default, 1 - ...
+;1game_opened_room - открытые точки телепортации:
+;0(000)   - все точки закрыты,
+;3(003)   - открыт нижний уровень,
+;4(004)   - открыт зал Ветров,
+;5(005)   - открыт зал телепортации,
+;34(034)  - открыты 1 и 2,
+;35(035)  - открыты 1 и 3,
+;45(045)  - открыты 2 и 3,
+;345(345) - открыты все точки
 if ( state == 1 )
 	if ( "1game_opened_room" == 0 )
 		if ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
 			Messagebox "Доступная телепортация:" "Башня" "Отмена"
-			set state to 2001
-			return
+			set state to 20001
 		elseif ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
-			Messagebox "Доступная телепортация:" "Холл" "Отмена"
+			Messagebox "Доступная телепортация:" "Хол" "Отмена"
+			set state to 20002
+		endif
+	elseif ( "1game_opened_room" == 3 )
+		if ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
+			Messagebox "Доступная телепортация:" "Башня" "Нижний Уровень" "Отмена"
+			set state to 20031
+		elseif ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
+			Messagebox "Доступная телепортация:" "Хол" "Нижний Уровень" "Отмена"
+			set state to 20032
+		elseif ( GetPCCell, "Гелендорф, Нижний Уровень (Энергообеспечение)" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Отмена"
+			set state to 20033
+		endif
+	elseif ( "1game_opened_room" == 4 )
+		if ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
+			Messagebox "Доступная телепортация:" "Башня" "Зал Ветров" "Отмена"
+			set state to 20041
+		elseif ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
+			Messagebox "Доступная телепортация:" "Хол" "Зал Ветров" "Отмена"
+			set state to 20042
+		elseif ( GetPCCell, "Гелендорф, Зал Ветров (Жизнеобеспечение)" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Отмена"
+			set state to 20044
+		endif
+	elseif ( "1game_opened_room" == 5 )
+		if ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
+			Messagebox "Доступная телепортация:" "Башня" "Зал Телепортации" "Отмена"
+			set state to 20051
+		elseif ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
+			Messagebox "Доступная телепортация:" "Хол" "Зал Телепортации" "Отмена"
+			set state to 20052
+		elseif ( GetPCCell, "Гелендорф, Зал Телепортации" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Отмена"
+			set state to 20055
+		endif
+	elseif ( "1game_opened_room" == 34 )
+		if ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
+			Messagebox "Доступная телепортация:" "Башня" "Нижний Уровень" "Зал Ветров" "Отмена"
+			set state to 20341
+		elseif ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
+			Messagebox "Доступная телепортация:" "Хол" "Нижний Уровень" "Зал Ветров" "Отмена"
+			set state to 20342
+		elseif ( GetPCCell, "Гелендорф, Нижний Уровень (Энергообеспечение)" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Зал Ветров" "Отмена"
+			set state to 20343
+		elseif ( GetPCCell, "Гелендорф, Зал Ветров (Жизнеобеспечение)" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Нижний уровень" "Отмена"
+			set state to 20344
+		endif
+	elseif ( "1game_opened_room" == 35 )
+		if ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
+			Messagebox "Доступная телепортация:" "Башня" "Нижний Уровень" "Зал Телепортации" "Отмена"
+			set state to 20351
+		elseif ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
+			Messagebox "Доступная телепортация:" "Хол" "Нижний Уровень" "Зал Телепортации" "Отмена"
+			set state to 20352
+		elseif ( GetPCCell, "Гелендорф, Нижний Уровень (Энергообеспечение)" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Зал Телепортации" "Отмена"
+			set state to 20353
+		elseif ( GetPCCell, "Гелендорф, Зал Телепортации" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Нижний уровень" "Отмена"
+			set state to 20355
+		endif
+	elseif ( "1game_opened_room" == 45 )
+		if ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
+			Messagebox "Доступная телепортация:" "Башня" "Зал Ветров" "Зал Телепортации" "Отмена"
+			set state to 20451
+		elseif ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
+			Messagebox "Доступная телепортация:" "Хол" "Зал Ветров" "Зал Телепортации" "Отмена"
+			set state to 20452
+		elseif ( GetPCCell, "Гелендорф, Зал Ветров (Жизнеобеспечение)" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Зал Телепортации" "Отмена"
+			set state to 20454
+		elseif ( GetPCCell, "Гелендорф, Зал Телепортации" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Зал Ветров" "Отмена"
+			set state to 20455
+		endif
+	elseif ( "1game_opened_room" == 345 )
+		if ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
+			Messagebox "Доступная телепортация:" "Башня" "Нижний Уровень" "Зал Ветров" "Зал Телепортации" "Отмена"
+			set state to 23451
+		elseif ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
+			Messagebox "Доступная телепортация:" "Хол" "Нижний Уровень" "Зал Ветров" "Зал Телепортации" "Отмена"
+			set state to 23452
+		elseif ( GetPCCell, "Гелендорф, Нижний Уровень (Энергообеспечение)" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Зал Ветров" "Зал Телепортации" "Отмена"
+			set state to 23453
+		elseif ( GetPCCell, "Гелендорф, Зал Ветров (Жизнеобеспечение)" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Нижний уровень" "Зал Телепортации" "Отмена"
+			set state to 23454
+		elseif ( GetPCCell, "Гелендорф, Зал Телепортации" == 1 )
+			MessageBox "Доступная телепортация:" "Хол" "Башня" "Нижний уровень" "Зал Ветров" "Отмена"
+			set state to 23455
+		endif
 	endif
 endif
 
-;вариант 00 - default: 2 точки (совпадают с полным набором) и отмена (не совпадает, надо переназначить)
-if ( state == 2001 )
+if ( state > 10 )
 	set button to GetButtonPressed
-        if ( button == 1 )
-        	set button to 10
-        endif
+	if ( state == 20001 )
+		if ( button == 0 )
+        		set button to 2
+        	elseif ( button == 1 )
+        		set button to 10
+        	endif
+        elseif ( state == 20002 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 10
+        	endif
+        elseif ( state == 20031 )
+        	if ( button == 0 )
+        		set button to 2
+        	elseif ( button == 1 )
+        		set button to 3
+        	elseif ( button == 2 )
+        		set button to 10
+		endif
+        elseif ( state == 20032 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 3
+        	elseif ( button == 2 )
+        		set button to 10
+		endif
+        elseif ( state == 20033 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 10
+		endif
+        elseif ( state == 20041 )
+        	if ( button == 0 )
+        		set button to 2
+        	elseif ( button == 1 )
+        		set button to 4
+        	elseif ( button == 2 )
+        		set button to 10
+		endif
+        elseif ( state == 20042 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 4
+        	elseif ( button == 2 )
+        		set button to 10
+		endif
+        elseif ( state == 20044 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 10
+		endif
+        elseif ( state == 20051 )
+        	if ( button == 0 )
+        		set button to 2
+        	elseif ( button == 1 )
+        		set button to 5
+        	elseif ( button == 2 )
+        		set button to 10
+		endif
+        elseif ( state == 20052 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 5
+        	elseif ( button == 2 )
+        		set button to 10
+		endif
+        elseif ( state == 20055 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 10
+		endif
+        elseif ( state == 20341 )
+        	if ( button == 0 )
+        		set button to 2
+        	elseif ( button == 1 )
+        		set button to 3
+        	elseif ( button == 2 )
+        		set button to 4
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20342 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 3
+        	elseif ( button == 2 )
+        		set button to 4
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20343 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 4
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20344 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 3
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20351 )
+        	if ( button == 0 )
+        		set button to 2
+        	elseif ( button == 1 )
+        		set button to 3
+        	elseif ( button == 2 )
+        		set button to 5
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20352 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 3
+        	elseif ( button == 2 )
+        		set button to 5
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20353 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 5
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20355 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 3
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20451 )
+        	if ( button == 0 )
+        		set button to 2
+        	elseif ( button == 1 )
+        		set button to 4
+        	elseif ( button == 2 )
+        		set button to 5
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20452 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 4
+        	elseif ( button == 2 )
+        		set button to 5
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20454 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 5
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 20455 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 4
+        	elseif ( button == 3 )
+        		set button to 10
+		endif
+        elseif ( state == 23451 )
+        	if ( button == 0 )
+        		set button to 2
+        	elseif ( button == 1 )
+        		set button to 3
+        	elseif ( button == 2 )
+        		set button to 4
+        	elseif ( button == 3 )
+        		set button to 5
+        	elseif ( button == 4 )
+        		set button to 10
+		endif
+        elseif ( state == 23452 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 3
+        	elseif ( button == 2 )
+        		set button to 4
+        	elseif ( button == 3 )
+        		set button to 5
+        	elseif ( button == 4 )
+        		set button to 10
+		endif
+        elseif ( state == 23453 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 4
+        	elseif ( button == 3 )
+        		set button to 5
+        	elseif ( button == 4 )
+        		set button to 10
+		endif
+        elseif ( state == 23454 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 3
+        	elseif ( button == 3 )
+        		set button to 5
+        	elseif ( button == 4 )
+        		set button to 10
+		endif
+        elseif ( state == 23455 )
+        	if ( button == 0 )
+        		set button to 1
+        	elseif ( button == 1 )
+        		set button to 2
+        	elseif ( button == 2 )
+        		set button to 3
+        	elseif ( button == 3 )
+        		set button to 4
+        	elseif ( button == 4 )
+        		set button to 10
+		endif
+	endif
         set state to 3
 endif
 
-;здесь находится полный набор точек телепортации
+;Здесь находится полный набор точек телепортации
 if ( state == 3 )
-	if ( button == 0 )
+	if ( button == 1 )
         	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-		Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня (Мастерская)"
-        elseif ( button == 1 )
+		Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Равновесия (Хол)"
+	elseif ( button == 2 )
          	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-		Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Телепортации"
+        	Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня (Мастерская)"
+	elseif ( button == 3 )
+         	set "1game_get_teleported" to 1
+        	playsound "conjuration hit"
+		Player->PositionCell "Гелендорф, Нижний Уровень (Энергообеспечение)"
+	elseif ( button == 4 )
+         	set "1game_get_teleported" to 1
+        	playsound "conjuration hit"
+		Player->PositionCell "Зал Ветров (Жизнеобеспечение)"
+	elseif ( button == 5 )
+         	set "1game_get_teleported" to 1
+        	playsound "conjuration hit"
+		Player->PositionCell "Гелендорф, Зал Телепортации"
 	endif
 	set state to 0
 	set button to 0
