@@ -1,0 +1,277 @@
+begin 1game_inside_teleportation2
+
+short button
+short state
+
+if ( state > 0 )
+        if ( state == 20001 )
+                if ( button == 0 )
+                        set button to 2
+                elseif ( button == 1 )
+                        set button to 10
+                endif
+        elseif ( state == 20002 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 10
+                endif
+        elseif ( state == 20031 )
+                if ( button == 0 )
+                        set button to 2
+                elseif ( button == 1 )
+                        set button to 3
+                elseif ( button == 2 )
+                        set button to 10
+                endif
+        elseif ( state == 20032 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 3
+                elseif ( button == 2 )
+                        set button to 10
+                endif
+        elseif ( state == 20033 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 10
+                endif
+        elseif ( state == 20041 )
+                if ( button == 0 )
+                        set button to 2
+                elseif ( button == 1 )
+                        set button to 4
+                elseif ( button == 2 )
+                        set button to 10
+                endif
+        elseif ( state == 20042 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 4
+                elseif ( button == 2 )
+                        set button to 10
+                endif
+        elseif ( state == 20044 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 10
+                endif
+        elseif ( state == 20051 )
+                if ( button == 0 )
+                        set button to 2
+                elseif ( button == 1 )
+                        set button to 5
+                elseif ( button == 2 )
+                        set button to 10
+                endif
+        elseif ( state == 20052 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 5
+                elseif ( button == 2 )
+                        set button to 10
+                endif
+        elseif ( state == 20055 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 10
+                endif
+        elseif ( state == 20341 )
+                if ( button == 0 )
+                        set button to 2
+                elseif ( button == 1 )
+                        set button to 3
+                elseif ( button == 2 )
+                        set button to 4
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20342 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 3
+                elseif ( button == 2 )
+                        set button to 4
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20343 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 4
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20344 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 3
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20351 )
+                if ( button == 0 )
+                        set button to 2
+                elseif ( button == 1 )
+                        set button to 3
+                elseif ( button == 2 )
+                        set button to 5
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20352 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 3
+                elseif ( button == 2 )
+                        set button to 5
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20353 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 5
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20355 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 3
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20451 )
+                if ( button == 0 )
+                        set button to 2
+                elseif ( button == 1 )
+                        set button to 4
+                elseif ( button == 2 )
+                        set button to 5
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20452 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 4
+                elseif ( button == 2 )
+                        set button to 5
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20454 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 5
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 20455 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 4
+                elseif ( button == 3 )
+                        set button to 10
+                endif
+        elseif ( state == 23451 )
+                if ( button == 0 )
+                        set button to 2
+                elseif ( button == 1 )
+                        set button to 3
+                elseif ( button == 2 )
+                        set button to 4
+                elseif ( button == 3 )
+                        set button to 5
+                elseif ( button == 4 )
+                        set button to 10
+                endif
+        elseif ( state == 23452 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 3
+                elseif ( button == 2 )
+                        set button to 4
+                elseif ( button == 3 )
+                        set button to 5
+                elseif ( button == 4 )
+                        set button to 10
+                endif
+        elseif ( state == 23453 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 4
+                elseif ( button == 3 )
+                        set button to 5
+                elseif ( button == 4 )
+                        set button to 10
+                endif
+        elseif ( state == 23454 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 3
+                elseif ( button == 3 )
+                        set button to 5
+                elseif ( button == 4 )
+                        set button to 10
+                endif
+        elseif ( state == 23455 )
+                if ( button == 0 )
+                        set button to 1
+                elseif ( button == 1 )
+                        set button to 2
+                elseif ( button == 2 )
+                        set button to 3
+                elseif ( button == 3 )
+                        set button to 4
+                elseif ( button == 4 )
+                        set button to 10
+                endif
+        endif
+        set "1game_inside_teleportation".button to button
+        set state to 0
+        set button to 0
+endif
+
+end
