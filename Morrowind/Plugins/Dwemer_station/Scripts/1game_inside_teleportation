@@ -148,7 +148,6 @@ endif
 
 ;Переназначение button
 if ( state > 10 )
-	messagebox "Переназначение button"
 	set button to GetButtonPressed
 	if ( state == 20001 )
 		if ( button == 0 )
@@ -420,7 +419,7 @@ endif
 
 ;Здесь находится полный набор точек телепортации
 if ( state == 3 )
-	messagebox "Телепортация"
+	messagebox "state=%.0f,button=%.of", state, button
 	if ( button == 1 )
         	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
