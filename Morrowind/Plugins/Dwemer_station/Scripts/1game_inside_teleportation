@@ -155,7 +155,7 @@ if ( state > 10 )
 endif
 
 if ( state == 4 )
-	if ( "1game_inside_teleportation_state" == 0 )
+	if ( "1game_inside_state" == 0 )
 		set state to 3
 	endif
 endif
