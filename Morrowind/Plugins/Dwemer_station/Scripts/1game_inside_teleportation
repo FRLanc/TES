@@ -149,10 +149,15 @@ endif
 ;Переназначение button
 if ( state > 10 )
 	set button to GetButtonPressed
-	set "1game_inside_teleportation2".button to button
-	set "1game_inside_teleportation2".state to state
-        set state to 3
-        return
+	set "1game_inside_teleportation_button" to button
+	set "1game_inside_teleportation_state" to state
+	set state to 4
+endif
+
+if ( state == 4 )
+	if ( "1game_inside_teleportation_state" == 0 )
+		set state to 3
+	endif
 endif
 
 ;Здесь находится полный набор точек телепортации
