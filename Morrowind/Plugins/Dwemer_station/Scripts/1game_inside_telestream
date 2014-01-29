@@ -7,62 +7,62 @@ short state
 short working
 
 if ( MenuMode == 1 )
-  return
+        return
 endif
 
 if ( "1game_get_teleported" == 1 )
-  if ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
-    setpos z "12198"
-  elseif ( GetPCCell, "Гелендорф, Зал Ветров (Жизнеобеспечение)" == 1 )
-    setpos z "12211"
-  elseif ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
-    setpos z "10"
-  elseif ( GetPCCell, "Гелендорф, Зал Телепортации" == 1 )
-    setpos z "15030"
-  elseif ( GetPCCell, "Гелендорф, Нижний Уровень (Энергообеспечение)" == 1 )
-    setpos z "330"
-  endif
-  set timer to 0
-  set state to 2
-  set working to 0
+	if ( GetPCCell, "Гелендорф, Башня (Мастерская)" == 1 )
+		setpos z "12198"
+	elseif ( GetPCCell, "Гелендорф, Зал Ветров (Жизнеобеспечение)" == 1 )
+		setpos z "12211"
+	elseif ( GetPCCell, "Гелендорф, Зал Равновесия (Хол)" == 1 )
+		setpos z "10"
+	elseif ( GetPCCell, "Гелендорф, Зал Телепортации" == 1 )
+		setpos z "15030"
+	elseif ( GetPCCell, "Гелендорф, Нижний Уровень (Энергообеспечение)" == 1 )
+		setpos z "330"
+	endif
+	set timer to 0
+	set state to 2
+	set working to 0
 endif
 
 if ( state == 1 )
-  set working to 1
-  set timer to ( timer + GetSecondsPassed )
-  if ( timer < 2 )
-    move z 50
-  elseif ( timer < 3 )
-    set timer to 0
-    set state to 2
-    set working to 0
-  endif
+	set working to 1
+	set timer to ( timer + GetSecondsPassed )
+	if ( timer < 2 )
+		move z 50
+	elseif ( timer < 3 )
+		set timer to 0
+		set state to 2
+		set working to 0
+	endif
 endif
 
 if ( state == 3 )
-  set working to 1
-  set timer to ( timer + GetSecondsPassed )
-  if ( timer < 2 )
-    move z -50
-  elseif ( timer < 3 )
-    set timer to 0
-    set state to 0
-    set working to 0
-  endif
+	set working to 1
+	set timer to ( timer + GetSecondsPassed )
+	if ( timer < 2 )
+		move z -50
+	elseif ( timer < 3 )
+		set timer to 0
+		set state to 0
+		set working to 0
+	endif
 endif
 
 if ( working == 1 )
-  return
+	return
 endif
 
 if ( "1game_ready" > 0 )
-  if ( state == 0 )
-    set state to 1
-  endif
+	if ( state == 0 )
+		set state to 1
+	endif
 elseif ( "1game_ready" == 0 )
-  if ( state == 2 )
-    set state to 3
-  endif
+	if ( state == 2 )
+		set state to 3
+	endif
 endif
 
 end
