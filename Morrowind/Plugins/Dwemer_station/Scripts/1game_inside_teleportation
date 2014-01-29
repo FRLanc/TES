@@ -425,23 +425,23 @@ if ( state == 3 )
 	if ( button == 1 )
         	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-		Player->PositionCell 3958, 3414, 15183, 0 "Гелендорф, Зал Равновесия (Хол)"
+		Player->PositionCell 3958, 3414, 15183, 0, "Гелендорф, Зал Равновесия (Хол)"
 	elseif ( button == 2 )
          	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-        	Player->PositionCell 4041, 4905, 12282, 0 "Гелендорф, Башня (Мастерская)"
+        	Player->PositionCell 4041, 4905, 12282, 0, "Гелендорф, Башня (Мастерская)"
 	elseif ( button == 3 )
          	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-		Player->PositionCell "Гелендорф, Нижний Уровень (Энергообеспечение)"
+		Player->PositionCell -2102, 3457, 444, 0, "Гелендорф, Нижний Уровень (Энергообеспечение)"
 	elseif ( button == 4 )
          	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-		Player->PositionCell "Зал Ветров (Жизнеобеспечение)"
+		Player->PositionCell 3832, 2563, 12302, 0, "Зал Ветров (Жизнеобеспечение)"
 	elseif ( button == 5 )
          	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
-		Player->PositionCell "Гелендорф, Зал Телепортации"
+		Player->PositionCell 3957, 3331, 15123, 0,  "Гелендорф, Зал Телепортации"
 	endif
 	set state to 0
 	set button to 0
