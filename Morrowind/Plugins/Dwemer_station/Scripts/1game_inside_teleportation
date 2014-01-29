@@ -148,6 +148,7 @@ endif
 
 ;Переназначение button
 if ( state > 10 )
+	messagebox "Переназначение button"
 	set button to GetButtonPressed
 	if ( state == 20001 )
 		if ( button == 0 )
@@ -416,6 +417,7 @@ if ( state > 10 )
 	endif
         set state to 3
 endif
+messagebox "Переназначено"
 
 ;Здесь находится полный набор точек телепортации
 if ( state == 3 )
