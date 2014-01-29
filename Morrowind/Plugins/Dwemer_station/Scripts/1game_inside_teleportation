@@ -417,10 +417,10 @@ if ( state > 10 )
 	endif
         set state to 3
 endif
-messagebox "Переназначено"
 
 ;Здесь находится полный набор точек телепортации
 if ( state == 3 )
+	messagebox "Телепортация"
 	if ( button == 1 )
         	set "1game_get_teleported" to 1
         	playsound "conjuration hit"
