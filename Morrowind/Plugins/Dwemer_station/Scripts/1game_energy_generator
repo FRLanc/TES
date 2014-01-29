@@ -1,14 +1,15 @@
-begin 1game_energy_generator
-;ШТА???
+Begin 1game_energy_generator
+
 short state
 
 if ( OnActivate == 1 )
-  if ( glob_en == 0 )
- messagebox "Ничего не происходит"
- return
- else
-  messagebox "Подача электричества возобновлена"
-  set 
-  
-  ...
-  ..
+        if ( glob_en == 0 )
+                messagebox "Ничего не происходит"
+                return
+        else
+                messagebox "Подача электричества возобновлена"
+;set 
+        endif
+endif
+
+End
