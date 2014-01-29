@@ -4,7 +4,7 @@ short abc
 
 if ( OnActivate == 1 )
 	set abc to ( abc + 1 )
-	messagebox "%0.f", abc
+	messagebox "%.0f %0.f", abc
 endif
 
 End
