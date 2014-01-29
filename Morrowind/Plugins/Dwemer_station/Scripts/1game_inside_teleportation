@@ -149,6 +149,7 @@ if ( state == 1 )
 	endif
 endif
 
+;Переназначение button
 if ( state > 10 )
 	set button to GetButtonPressed
 	if ( state == 20001 )
