@@ -1,0 +1,714 @@
+begin 1game_telescreen_process
+
+short state
+short do
+float timer
+
+if ( menumode == 1 )
+  return
+endif
+
+if ( OnActivate == 1 )
+  if ( "1game_select" >= 1 )
+  set state to 1
+  endif
+endif
+
+if ( OnActivate == 1 )
+  if ( "1game_select" == 0 )
+  messagebox "Сначала выбирите точку телепортации"
+  return
+  endif
+endif
+
+if ( OnActivate == 1 )
+  if ( "02_generatorON" == 0 )
+    elseif ( "04_teleport" != 2 )
+  return
+  endif
+endif
+
+if ( state == 1 ) 
+  if ( do == 0 )
+    PlaySound "winged twil moan"
+    set do to 1
+  endif
+  set timer to ( timer + GetSecondsPassed )
+  if ( timer >= 3 )
+    set state to 2
+    set timer to 1000
+  elseif ( timer < 3 ) 
+    "01_light_02"->moveworld z -2
+    "01_light_03"->moveworld z -4
+    "01_light_04"->moveworld z -6
+    "01_light_05"->moveworld z -8
+    "01_light_06"->moveworld z -10
+    "01_light_07"->moveworld z -12
+    "01_light_08"->moveworld z -14
+    "01_light_09"->moveworld z -16
+    "01_light_10"->moveworld z -18
+    "01_propilion"->moveworld z 9
+
+    "02_light_02"->moveworld z -2
+    "02_light_03"->moveworld z -4
+    "02_light_04"->moveworld z -6
+    "02_light_05"->moveworld z -8
+    "02_light_06"->moveworld z -10
+    "02_light_07"->moveworld z -12
+    "02_light_08"->moveworld z -14
+    "02_light_09"->moveworld z -16
+    "02_light_10"->moveworld z -18
+    "02_propilion"->moveworld z 9
+
+    "03_light_02"->moveworld z -2
+    "03_light_03"->moveworld z -4
+    "03_light_04"->moveworld z -6
+    "03_light_05"->moveworld z -8
+    "03_light_06"->moveworld z -10
+    "03_light_07"->moveworld z -12
+    "03_light_08"->moveworld z -14
+    "03_light_09"->moveworld z -16
+    "03_light_10"->moveworld z -18
+
+    "03_propilion"->moveworld z 9
+    "04_light_02"->moveworld z -2
+    "04_light_03"->moveworld z -4
+    "04_light_04"->moveworld z -6
+    "04_light_05"->moveworld z -8
+    "04_light_06"->moveworld z -10
+    "04_light_07"->moveworld z -12
+    "04_light_08"->moveworld z -14
+    "04_light_09"->moveworld z -16
+    "04_light_10"->moveworld z -18
+
+    "04_propilion"->moveworld z 9
+    "05_light_02"->moveworld z -2
+    "05_light_03"->moveworld z -4
+    "05_light_04"->moveworld z -6
+    "05_light_05"->moveworld z -8
+    "05_light_06"->moveworld z -10
+    "05_light_07"->moveworld z -12
+    "05_light_08"->moveworld z -14
+    "05_light_09"->moveworld z -16
+    "05_light_10"->moveworld z -18
+    "05_propilion"->moveworld z 9
+
+    "06_light_02"->moveworld z -2
+    "06_light_03"->moveworld z -4
+    "06_light_04"->moveworld z -6
+    "06_light_05"->moveworld z -8
+    "06_light_06"->moveworld z -10
+    "06_light_07"->moveworld z -12
+    "06_light_08"->moveworld z -14
+    "06_light_09"->moveworld z -16
+    "06_light_10"->moveworld z -18
+    "06_propilion"->moveworld z 9
+
+    "07_light_02"->moveworld z -2
+    "07_light_03"->moveworld z -4
+    "07_light_04"->moveworld z -6
+    "07_light_05"->moveworld z -8
+    "07_light_06"->moveworld z -10
+    "07_light_07"->moveworld z -12
+    "07_light_08"->moveworld z -14
+    "07_light_09"->moveworld z -16
+    "07_light_10"->moveworld z -18
+    "07_propilion"->moveworld z 9
+
+    "08_light_02"->moveworld z -2
+    "08_light_03"->moveworld z -4
+    "08_light_04"->moveworld z -6
+    "08_light_05"->moveworld z -8
+    "08_light_06"->moveworld z -10
+    "08_light_07"->moveworld z -12
+    "08_light_08"->moveworld z -14
+    "08_light_09"->moveworld z -16
+    "08_light_10"->moveworld z -18
+    "08_propilion"->moveworld z 9
+  endif
+endif
+
+if ( state == 2 )
+  if ( "1game_select" == 1 )
+    MessageBox "Телепортация в Дагон Фел..."
+    Player->Position, 58761 181776 555 80
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 2 )
+    MessageBox "Телепортация в Мчулефт..."
+    Player->Position, 54642 176963 1241 29
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 3 )
+    MessageBox "Телепортация в Храм Санктус..."
+    Player->Position, 12202 173650 2016 22
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 4 )
+    MessageBox "Телепортация в Ротеран..."
+    Player->Position, 53206 154027 1860 132
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 5 )
+    MessageBox "Телепортация в Альд Даэдрот..."
+    Player->Position, 92214 167957 536 94
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 6 )
+    MessageBox "Телепортация в Альд Редайния..."
+    Player->Position, -29894 179323 2320 270
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 7 )
+    MessageBox "Телепортация в Лачугу Большеголового..."
+    Player->Position, -13749 202194 1798 85
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 8 )
+    MessageBox "Телепортация в Вас..."
+    Player->Position, 7910 186497 675 171
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 9 )
+    MessageBox "Телепортация в Альд'рун..."
+    Player->Position, -15577 52173 2118 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 10 )
+    MessageBox "Телепортация в Маар Ган..."
+    Player->Position, -22413 101807 1969 180
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 11 )
+    MessageBox "Телепортация в Призрачные Врата..."
+    Player->Position, 20752 38261 1274 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 12 )
+    MessageBox "Телепортация в Фаласмарион..."
+    Player->Position, -11955 127599 1455 190
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 13 )
+    MessageBox "Телепортация в Лагерь Уршилаку..."
+    Player->Position, -29011 150185 707 85
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 14 )
+    MessageBox "Телепортация в Валенварион..."
+    Player->Position, -3682 154119 2354 180
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 15 )
+    MessageBox "Телепортация в Дагот Ур..."
+    Player->Position, 19521 70401 11880 263
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 16 )
+    MessageBox "Телепортация в Форт Пестрой Бабочки..."
+    Player->Position, -13360 43071 2615 90
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 17 )
+    MessageBox "Телепортация в Гнизис..."
+    Player->Position, -86336 92029 1028 180
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 18 )
+    MessageBox "Телепортация в Альд Велоти..."
+    Player->Position, -84298 123589 1402 330
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 19 )
+    MessageBox "Телепортация в Хуул..."
+    Player->Position, -66297 137851 536 327
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 20 )
+    MessageBox "Телепортация в Берандас..."
+    Player->Position, -77788 76069 2351 344
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 21 )
+    MessageBox "Телепортация в Андасрет..."
+    Player->Position, -68248 47807 1808 160
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 22 )
+    MessageBox "Телепортация в Аркнгтунч-Штурдумц..."
+    Player->Position, -103644 116298 2261 183
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 23 )
+    MessageBox "Телепортация в Пещера Коала..."
+    Player->Position, -87692 79258 109 182
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+    
+if ( state == 2 )
+  if ( "1game_select" == 24 )
+    MessageBox "Телепортация в Ашинаби..."
+    Player->Position, -103111 93860 1464 137
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 25 )
+    MessageBox "Телепортация в Гнаар Мок..."
+    Player->Position, -58679 26486 190 270
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 26 )
+    MessageBox "Телепортация в Кальдера..."
+    Player->Position, -11293 20011 1360 124
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 27 )
+    MessageBox "Телепортация в Балмора..."
+    Player->Position, -22290 -18786 485 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 28 )
+    MessageBox "Телепортация в Хлормарен..."
+    Player->Position, -45093 -4929 2386 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 29 )
+    MessageBox "Телепортация в Хла Оуд..."
+    Player->Position, -48494 -39754 188 80
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 30 )
+    MessageBox "Телепортация в Форт Лунной Бабочки..."
+    player->Position, -5075 -18578 1073 180
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 31 )
+    MessageBox "Телепортация в Пелагиад..."
+    Player->Position, 5738 -56059 1795 90
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 32 )
+    MessageBox "Телепортация в Сейда Нин..."
+    Player->Position, -8681 -70139 923 23
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 33 )
+    MessageBox "Телепортация в Эбенгард..."
+    Player->Position, 10290 -100626 1472 90
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 34 )
+    MessageBox "Телепортация в Вивек(Храм)..."
+    Player->Position, 32879 -99093 1168 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 35 )
+    MessageBox "Телепортация в Вивек(Иностранный Чужеземцев)..."
+    Player->Position, 29869 -78507 3105 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 36 )
+    MessageBox "Телепортация в Плантация Дрен..."
+    Player->Position, 22169 -55319 755 118
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 37 )
+    MessageBox "Телепортация в Суран..."
+    Player->Position, 53162 -48230 984 180
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 38 )
+    MessageBox "Телепортация в Альд Сота..."
+    Player->Position, 55618 -73029 107 148
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 39 )
+    MessageBox "Телепортация в Мзанч..."
+    Player->Position, 71168 -74304 384 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 40 )
+    MessageBox "Телепортация в Бал Фелл..."
+    Player->Position, 73315 -96084 777 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 41 )
+    MessageBox "Телепортация в Марандус..."
+    Player->Position, 37083 -20283 1454 218
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 42 )
+    MessageBox "Телепортация в Теласеро..."
+    Player->Position, 77330 -52928 1444 223
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 43 )
+    MessageBox "Телепортация в Молаг Мар..."
+    Player->Position, 110666 -61665 2178 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 44 )
+    MessageBox "Телепортация в Гора Канд..."
+    Player->Position, 93713 -39313 6424 45
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 45 )
+    MessageBox "Телепортация в Лагерь Эрабенимсунов..."
+    Player->Position, 109740 -3908 634 282
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 46 )
+    MessageBox "Телепортация в Бал Исра..."
+    Player->Position, -35684 79406 1783 50
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 47 )
+    MessageBox "Телепортация в Плато Одай..."
+    Player->Position, -35555 -37052 1906 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 48 )
+    MessageBox "Телепортация в Кладбище Увирит..."
+    Player->Position, 85814 11267 1896 132
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 49 )
+    MessageBox "Телепортация в Лагерь Ахеммуза..."
+    Player->Position, 94264 134918 951 137
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 50 )
+    MessageBox "Телепортация в Тель Вос..."
+    Player->Position, 89021 117944 3252 280
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 51 )
+    MessageBox "Телепортация в Вос..."
+    Player->Position, 100664 114037 255 222
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 52 )
+    MessageBox "Телепортация в Лагерь Зайнаб..."
+    Player->Position, 78195 84681 885 247
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 53 )
+    MessageBox "Телепортация в Индоранион..."
+    Player->Position, 119528 75714 1364 353
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 54 )
+    MessageBox "Телепортация в Фаленсарано..."
+   Player->Position, 76153 51408 1683 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 55 )
+    MessageBox "Телепортация в Дабдилла..."
+    Player->Position, 94296 97381 1447 182
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 56 )
+    MessageBox "Телепортация в Нчулефт..."
+    Player->Position, 65881 104224 2860 90
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 57 )
+    MessageBox "Телепортация в Тель Мора..."
+    Player->Position, 106928 117172 263 34
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 58 )
+    MessageBox "Телепортация в Тель Арун..."
+    Player->Position, 123304 41164 182 52
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 59 )
+    MessageBox "Телепортация в Садрит Мора..."
+    Player->Position, 141878 38637 338 177
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 60 )
+    MessageBox "Телепортация в Тель Фир..."
+    Player->Position, 124384 15858 492 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 61 )
+    MessageBox "Телепортация в Тель Бранора..."
+    Player->Position, 54642 176963 1241 29 ; XXXXXXXXX
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 62 )
+    MessageBox "Телепортация в Храм Азуры..."
+    Player->Position, 161720 -61790 1665 102
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 63 )
+    MessageBox "Телепортация в Холамаян..."
+    Player->Position, 160255 -36135 168 0
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 2 )
+  if ( "1game_select" == 64 )
+    MessageBox "Телепортация в Приемную Королевского Дворца Морнхолда..."
+    Player->PositionCell 2.730 959.274 -105.817 180 "Mournhold, Royal Palace: Reception Area"
+    set state to 50
+    set "1game_select" to 0
+  endif 
+endif 
+
+if ( state == 50 )
+
+    endif
+  endif
+endif
+
+end
+
