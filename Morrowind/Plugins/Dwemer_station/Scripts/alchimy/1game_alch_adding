@@ -1,0 +1,21 @@
+Begin 1game_alch_adding
+
+if ( menumode == 1 )
+	Return
+endif
+
+set "1game_alch_menu" to 1
+
+      if ( "1game_alch_state" == 1 )
+            Player->AddItem "1game_alch_alembic" 1
+            Player->AddItem "1game_alch_calcinator" 1
+            Player->AddItem "1game_alch_retorta" 1
+            Player->AddItem "1game_alch_mortarpesle" 1
+            Player->Equip "1game_alch_mortarpesle"
+endif
+
+StopSound "Item Misc Up"
+
+StopScript 1game_alch_adding
+
+End
