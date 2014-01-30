@@ -1,0 +1,24 @@
+Begin 1game_alch_activation
+
+if ( MenuMode == 1 )
+	Return
+endif
+
+if ( "1game_alch_menu" == 1 )
+	Set "1game_alch_menu" to 0
+	    StartScript "1game_alch_remove"
+endif
+
+if ( OnActivate == 1 )
+	if ( GetPCSneaking == 1 )
+		return
+elseif ( Player->GetEffect, sEffectTelekinesis == 1 )	
+		return
+else
+	  set "1game_alch_state" to 1
+    PlaySound "alteration hit"
+		StartScript "1game_alch_adding"
+	endif
+endif
+
+End
