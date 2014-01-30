@@ -5,34 +5,62 @@ short button
 
 If ( OnActivate == 1 )
 	if ( state == 0 )
-		messagebox "Продолжить" "Вперед"
-
+		set state to -1
+		messagebox "Продолжить" "Вперед" "Отмена"
 		EnableRaceMenu
-		set state to 10
+		set button to GetButtonPressed
+			if ( button == 0 )
+				set state to 10
+			elseif ( button == 1 )
+				set state to 0
+				return
+			endif
 	endif
 endif
 
 if ( MenuMode == 0 )
 	if ( state == 10 )
-		messagebox "Продолжить" "Вперед"
+		set state to -1
+		messagebox "Продолжить" "Вперед" "Назад"
 		EnableClassMenu
-		set state to 20
+		set button to GetButtonPressed
+			if ( button == 0 )
+				set state to 20
+			elseif ( button == 1 )
+				set state to 0
+				activate
+			endif
 	endif
 endif
 
 if ( MenuMode == 0 )
 	if ( state == 20 )
-		messagebox "Продолжить" "Вперед"
+		set state to -1
+		messagebox "Продолжить" "Вперед" "Назад"
 		EnableBirthMenu
-		set state to 30
+		set button to GetButtonPressed
+			if ( button == 0 )
+				set state to 30
+			elseif ( button == 1 )
+				set state to 10
+				return
+			endif
 	endif
 endif
 
 if ( MenuMode == 0 )
 	if ( state == 30 )
-		messagebox "Продолжить" "Вперед"
+		set state to -1
+		messagebox "Продолжить" "Готово" "Назад"
 		EnableStatReviewMenu
-		set state to 0
+		set button to GetButtonPressed
+			if ( button == 0 )
+				set state to 0
+				return
+			elseif ( button == 1 )
+				set state to 20
+				return
+			endif
 	endif
 endif
 
