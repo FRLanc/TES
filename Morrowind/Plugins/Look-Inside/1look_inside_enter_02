@@ -1,0 +1,7 @@
+begin 1look_inside_enter_02
+
+If ( OnActivate == 1 )
+  messagebox "Обратного пути нет"
+  return
+endif
+end
