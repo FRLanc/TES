@@ -1,0 +1,14 @@
+begin 1look_inside_enter
+
+if ( OnActivate == 1 )
+  player->additem "light_com_torch_01_256" 1
+  player->equip "light_com_torch_01_256"
+  player->setspeed 50
+  tm;toggle menu
+  DisablePlayerJumping
+  DisablePlayerViewSwitch
+  DisableVanityMode
+  DisablePlayerMagic
+  activate
+endif
+end
