@@ -1,0 +1,15 @@
+begin 1look_inside_trigger
+
+short state
+
+if ( state == 0 )
+	if ( GetStandingPC == 1 )
+		set state to 1
+		set "1_look_inside_level" to ( "1_look_inside_level" + 1 )
+		player->position 6016, 3008, 14256, 0
+	else
+		 set state to 0
+	endif
+endif
+
+end
