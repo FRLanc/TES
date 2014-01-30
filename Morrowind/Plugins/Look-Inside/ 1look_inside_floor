@@ -1,0 +1,6 @@
+begin 1look_inside_floor
+
+if ( OnActivate == 1 )
+	MessageBox "Этаж: %.0"1_look_inside_level""
+endif
+end
