@@ -1,0 +1,617 @@
+begin 1game_telescreen
+
+
+;Телепортация по миру
+
+short button
+short state
+
+if ( OnActivate == 1 )
+    if ( "1game_energy" == 1 )
+      set state to 1
+    else
+      messagebox "Ничего не происходит, кажется, требуется питание"
+      return
+  endif
+endif
+
+if ( state == -1 )
+  return
+endif
+
+if ( state == 1 )
+	MessageBox  "Выбрать точку телепортации:" "Отмена" "Шигорад..." "Эшленд..." "Западное Нагорье..." "Горький Берег..."  "Аскадианские Острова..." "Молаг Амур и Крепости..." "Грейзленд..." "Острова Восточного Побережья и Морнхолд..."
+	Set state to 2
+endif
+
+if ( state == 2 )
+	Set button to GetButtonPressed
+
+	if ( button == 0 )
+		; Cancel
+		Set state to 0
+	endif
+
+	if ( button == 1 )
+		; Шигорад
+		MessageBox "Выберите место назначения:" "Назад..." "Дагон Фел" "Мчулефт" "Храм Санктус" "Ротеран" "Альд Даэдрот" "Альд Редайния" "Лачуга Большеголового" "Вас"
+		Set state to 3
+	endif
+
+	if ( button == 2 )
+		; Эшленд
+		MessageBox "Выберите место назначения:" "Назад..." "Альд'рун" "Маар Ган" "Призрачные Врата" "Фаласмарион" "Лагерь Уршилаку" "Валенварион" "Дагот Ур" "Форт Пестрой Бабочки"
+		Set state to 4
+	endif
+	if ( button == 3 )
+		; Западное Нагорье
+		MessageBox "Выберите место назначения:" "Назад..." "Гнизис" "Альд Велоти" "Хуул" "Берандас" "Андасрет" "Аркнгтунч-Штурдумц" "Пещера Коала" "Ашинаби"
+		Set state to 5
+	endif
+	if ( button == 4 )
+		; Горький Берег
+		MessageBox "Выберите место назначения:" "Назад..." "Гнаар Мок" "Кальдера" "Балмора" "Хлормарен" "Хла Оуд" "Форт Лунной Бабочки" "Пелагиад" "Сейда Нин"
+		Set state to 6
+	endif
+	if ( button == 5 )
+		; Аскадианские Острова
+		MessageBox "Выберите место назначения:" "Назад..." "Эбенгард" "Вивек(Храм)" "Вивек(Квартал Чужеземцев)" "Плантация Дрен" "Суран" "Альд Сота" "Мзанч" "Бал Фелл"
+		Set state to 7
+	endif
+	if ( button == 6 )
+		; Молаг Амур и Крепости
+		MessageBox "Выберите место назначения:" "Назад..." "Марандус" "Теласеро" "Молаг Мар" "Гора Канд" "Лагерь Эрабенимсунов" "Бал Исра" "Плато Одай" "Кладбище Увирит"
+		Set state to 8
+	endif
+	if ( button == 7 )
+		; Грейзленд 
+		MessageBox "Выберите место назначения:" "Назад..." "Лагерь Ахеммуза" "Тель Вос" "Вос" "Лагерь Зайнаб" "Индоранион" "Фаленсарано" "Дабдилла" "Нчулефт"
+		Set state to 9
+	endif
+	if ( button == 8 )
+		; Острова Восточного Побережья и Морнхолд
+		MessageBox "Выберите место назначения:" "Назад..." "Тель Мора" "Тель Арун" "Садрит Мора" "Тель Фир" "Тель Бранора" "Храм Азуры" "Холамаян" "Приемная Королевского Дворца Морнхолда"
+		Set state to 10
+	endif
+endif
+
+; Шигорад
+if ( state == 3 )
+	Set button to GetButtonPressed
+	if ( button == 0 )
+		; Back
+		Set state to 1
+	endif
+	if ( button == 1 )
+		; Дагон Фел
+		MessageBox "Выбрана точка телепортации -Дагон Фел..."
+                                 set "05_teleport" to 1
+                              set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 2 )
+
+		; Мчулефт
+		MessageBox "Выбрана точка телепортации - Мчулефт..."
+                                set "05_teleport" to 2
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 3 )
+		; Храм Санктус
+		MessageBox "Выбрана точка телепортации - Храм Санктус..."
+                                set "05_teleport" to 3
+ set "04_teleport" to 2 
+		
+	Set state to 0
+	endif
+	if ( button == 4 )
+		; Ротеран
+		MessageBox "Выбрана точка телепортации - Ротеран..."
+                                set "05_teleport" to 4
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 5 )
+		; Альд Даэдрот
+		MessageBox "Выбрана точка телепортации - Альд Даэдрот..."
+                                set "05_teleport" to 5
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 6 )
+		; Альд Редайния
+		MessageBox "Выбрана точка телепортации - Альд Редайния..."
+                                set "05_teleport" to 6
+ set "04_teleport" to 2 
+                                Set state to 0
+	endif
+	if ( button == 7 )
+		; Лачуга Большеголового
+		MessageBox "Выбрана точка телепортации - Лачуга Большеголового..."
+                                set "05_teleport" to 7
+ set "04_teleport" to 2 
+                                Set state to 0
+	endif
+	if ( button == 8 )
+		; Вас
+
+		MessageBox "Выбрана точка телепортации - Вас..."
+set "05_teleport" to 8
+	 set "04_teleport" to 2 	
+		Set state to 0
+	endif
+endif
+
+; Эшленд
+if ( state == 4 )
+	Set button to GetButtonPressed
+	if ( button == 0 )
+		; Back
+		Set state to 1
+	endif
+	if ( button == 1 )
+		; Альд'рун
+		MessageBox "Выбрана точка телепортации - Альд'рун..."
+set "05_teleport" to 9
+ set "04_teleport" to 2 		
+		Set state to 0
+	endif
+endif
+	if ( button == 2 )
+		; Маар Ган
+		MessageBox "Выбрана точка телепортации - Маар Ган..."
+set "05_teleport" to 10
+ set "04_teleport" to 2 
+		
+		Set state to 0
+	endif
+	if ( button == 3 )
+		; Призрачные Врата
+		MessageBox "Выбрана точка телепортации - Призрачные Врата..."
+set "05_teleport" to 11
+ set "04_teleport" to 2 		
+		Set state to 0
+	endif
+	if ( button == 4 )
+		; Фаласмарион
+		MessageBox "Выбрана точка телепортации - Фаласмарион..."
+set "05_teleport" to 12
+ set "04_teleport" to 2 
+		
+		Set state to 0
+	endif
+	if ( button == 5 )
+		; Urshilaku Camp
+		MessageBox "Выбрана точка телепортации -Лагерь Уршилаку..."
+set "05_teleport" to 13
+
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 6 )
+		; Valenvaryon
+		MessageBox "Выбрана точка телепортации - Валенварион..."
+set "05_teleport" to 14
+ set "04_teleport" to 2 	
+		Set state to 0
+	endif
+	if ( button == 7 )
+		; Dagoth Ur
+		MessageBox "Выбрана точка телепортации - Дагот Ур..."
+set "05_teleport" to 15
+	 set "04_teleport" to 2 
+		Set state to 0
+	endif
+
+	if ( button == 8 )
+		; Ft. Buckmoth
+		MessageBox "Выбрана точка телепортации - Форт Пестрой Бабочки..."
+          set "05_teleport" to 16
+		Set state to 0
+	endif
+
+; Западное Нагорье
+if ( state == 5 )
+	Set button to GetButtonPressed
+	if ( button == 0 )
+		; Back
+		Set state to 1
+	endif
+	if ( button == 1 )
+		; Гнизис
+		MessageBox "Выбрана точка телепортации - Гнизис..."
+set "05_teleport" to 17
+	 set "04_teleport" to 2 	
+		Set state to 0
+	endif
+	if ( button == 2 )
+		; Альд Велоти
+		MessageBox "Выбрана точка телепортации - Альд Велоти..."
+set "05_teleport" to 18
+	 set "04_teleport" to 2 	
+		Set state to 0
+	endif
+	if ( button == 3 )
+		; Хуул
+		MessageBox "Выбрана точка телепортации - Хуул..."
+set "05_teleport" to 19
+	 set "04_teleport" to 2 	
+		Set state to 0
+	endif
+	if ( button == 4 )
+		; Берандас
+		MessageBox "Выбрана точка телепортации - Берандас..."
+set "05_teleport" to 20
+	 set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 5 )
+		; Андасрет
+		MessageBox "Выбрана точка телепортации - Андасрет..."
+set "05_teleport" to 21
+ set "04_teleport" to 2 
+
+
+		Set state to 0
+	endif
+	if ( button == 6 )
+		; Аркнгтунч-Штурдумц
+		MessageBox "Выбрана точка телепортации - Аркнгтунч-Штурдумц..."
+set "05_teleport" to 22
+ set "04_teleport" to 2 
+		
+		Set state to 0
+	endif
+	if ( button == 7 )
+		; Пещера Коала
+		MessageBox "Выбрана точка телепортации - Пещера Коала..."
+set "05_teleport" to 23
+ set "04_teleport" to 2 
+		
+
+		Set state to 0
+	endif
+	if ( button == 8 )
+		; Ашинаби
+		MessageBox "Выбрана точка телепортации - Ашинаби..."
+set "05_teleport" to 24
+ set "04_teleport" to 2 
+
+
+		Set state to 0
+	endif
+endif
+
+; Горький Берег
+if ( state == 6 )
+	Set button to GetButtonPressed
+	if ( button == 0 )
+		; Back
+		Set state to 1
+	endif
+endif
+	if ( button == 1 )
+		; Гнаар Мок
+		MessageBox "Выбрана точка телепортации - Гнаар Мок..."
+      set "05_teleport" to 25
+	 set "04_teleport" to 2 	
+		Set state to 0
+	endif
+	if ( button == 2 )
+		; Кальдера
+		MessageBox "Выбрана точка телепортации - Кальдера..."
+set "05_teleport" to 26
+	 set "04_teleport" to 2 	
+		Set state to 0
+	endif
+	if ( button == 3 )
+		; Балмора
+		MessageBox "Выбрана точка телепортации - Балмора..."
+set "05_teleport" to 27
+	 set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 4 )
+		; Хлормарен
+		MessageBox "Выбрана точка телепортации - Хлормарен..."
+set "05_teleport" to 28
+	 set "04_teleport" to 2 	
+		Set state to 0
+	endif
+	if ( button == 5 )
+		; Хла Оуд
+		MessageBox "Выбрана точка телепортации - Хла Оуд..."
+set "05_teleport" to 29
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 6 )
+		; Форт Лунной Бабочки
+		MessageBox "Выбрана точка телепортации - Форт Лунной Бабочки..."
+	set "05_teleport" to 30
+ set "04_teleport" to 2 
+	Set state to 0
+	endif
+
+	if ( button == 7 )
+		; Пелагиад 
+		MessageBox "Выбрана точка телепортации - Пелагиад..."
+set "05_teleport" to 31
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 8 )
+		; Сейда Нин
+		MessageBox "Выбрана точка телепортации - Сейда Нин..."
+set "05_teleport" to 32
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+endif
+
+; Аскадианские Острова
+if ( state == 7 )
+	Set button to GetButtonPressed
+	if ( button == 0 )
+		; Back
+		Set state to 1
+	endif
+	if ( button == 1 )
+		; Эбенгард
+		MessageBox "Выбрана точка телепортации - Эбенгард..."
+set "05_teleport" to 33
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 2 )
+		; Вивек(Храм)
+		MessageBox "Выбрана точка телепортации - Вивек(Храм)..."
+set "05_teleport" to 34
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 3 )
+		; Вивек(Иностранный Чужеземцев)
+		MessageBox "Выбрана точка телепортации - Вивек(Иностранный Чужеземцев)..."
+set "05_teleport" to 35
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 4 )
+		; Плантация Дрен 
+		MessageBox "Выбрана точка телепортации - Плантация Дрен..."
+set "05_teleport" to 36
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 5 )
+		; Суран
+		MessageBox "Выбрана точка телепортации - Суран..."
+set "05_teleport" to 37
+ set "04_teleport" to 2 
+
+		Set state to 0
+	endif
+	if ( button == 6 )
+		; Альд Сота
+		MessageBox "Выбрана точка телепортации - Альд Сота..."
+set "05_teleport" to 38
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 7 )
+		; Мзанч
+		MessageBox "Выбрана точка телепортации - Мзанч..."
+set "05_teleport" to 39
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 8 )
+		; Бал Фелл 
+		MessageBox "Выбрана точка телепортации - Бал Фелл..."
+set "05_teleport" to 40
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+endif
+
+; Молаг Амур и Крепости
+if ( state == 8 )
+	Set button to GetButtonPressed
+	if ( button == 0 )
+		; Back
+		Set state to 1
+	endif
+	if ( button == 1 )
+		; Марандус
+		MessageBox "Выбрана точка телепортации - Марандус..."
+set "05_teleport" to 41
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 2 )
+		; Теласеро
+		MessageBox "Выбрана точка телепортации - Теласеро..."
+set "05_teleport" to 42
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 3 )
+		; Молаг Мар
+		MessageBox "Выбрана точка телепортации - Молаг Мар..."
+set "05_teleport" to 43
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 4 )
+		; Гора Канд
+		MessageBox "Выбрана точка телепортации - Гора Канд..."
+set "05_teleport" to 44
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 5 )
+		; Лагерь Эрабенимсунов 
+		MessageBox "Выбрана точка телепортации - Лагерь Эрабенимсунов..."
+set "05_teleport" to 45
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 6 )
+		; Бал Исра
+		MessageBox "Выбрана точка телепортации - Бал Исра..."
+set "05_teleport" to 46
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 7 )
+		; Плато Одай 
+		MessageBox "Выбрана точка телепортации - Плато Одай..."
+set "05_teleport" to 47
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 8 )
+		; Кладбище Увирит 
+
+		MessageBox "Выбрана точка телепортации - Кладбище Увирит..."
+set "05_teleport" to 48
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+endif
+
+; Грейзленд
+if ( state == 9 )
+	Set button to GetButtonPressed
+	if ( button == 0 )
+		; Back
+		Set state to 1
+	endif
+	if ( button == 1 )
+		; Лагерь Ахеммуза 
+		MessageBox "Выбрана точка телепортации - Лагерь Ахеммуза..."
+set "05_teleport" to 49
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 2 )
+		; Тель Вос
+		MessageBox "Выбрана точка телепортации - Тель Вос..."
+set "05_teleport" to 50
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 3 )
+		; Вос
+		MessageBox "Выбрана точка телепортации - Вос..."
+set "05_teleport" to 51
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 4 )
+		; Лагерь Зайнаб 
+		MessageBox "Выбрана точка телепортации - Лагерь Зайнаб..."
+set "05_teleport" to 52
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 5 )
+		; Индоранион
+		MessageBox "Выбрана точка телепортации - Индоранион..."
+set "05_teleport" to 53
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 6 )
+		; Фаленсарано
+		MessageBox "Выбрана точка телепортации - Фаленсарано..."
+set "05_teleport" to 54
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 7 )
+		; Дабдилла 
+		MessageBox "Выбрана точка телепортации - Дабдилла..."
+set "05_teleport" to 55
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 8 )
+		; Нчулефт
+		MessageBox "Выбрана точка телепортации - Нчулефт..."
+set "05_teleport" to 56
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+endif
+
+; Острова Восточного Побережья и Морнхолд
+if ( state == 10 )
+	Set button to GetButtonPressed
+	if ( button == 0 )
+		; Back
+		Set state to 1
+	endif
+	if ( button == 1 )
+		; Тель Мора
+
+		MessageBox "Выбрана точка телепортации - Тель Мора..."
+set "05_teleport" to 57
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 2 )
+		; Тель Арун
+		MessageBox "Выбрана точка телепортации - Тель Арун..."
+set "05_teleport" to 58
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 3 )
+		; Садрит Мора
+		MessageBox "Выбрана точка телепортации - Садрит Мора..."
+set "05_teleport" to 59
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 4 )
+		; Тель Фир
+		MessageBox "Выбрана точка телепортации - Тель Фир..."
+set "05_teleport" to 60
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 5 )
+		; Тель Бранора 
+		MessageBox "Выбрана точка телепортации - Тель Бранора..."
+set "05_teleport" to 61
+ set "04_teleport" to 2 
+
+		Set state to 0
+	endif
+	if ( button == 6 )
+		; Храм Азуры
+		MessageBox "Выбрана точка телепортации - Храм Азуры..."
+set "05_teleport" to 62
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 7 )
+		; Холамаян
+		MessageBox "Выбрана точка телепортации - Холамаян..."
+set "05_teleport" to 63
+ set "04_teleport" to 2 
+		Set state to 0
+	endif
+	if ( button == 8 )
+		; Приемная Королевского Дворца Морнхолда
+		MessageBox "Выбрана точка телепортации - Приемная Королевского Дворца Морнхолда..."
+		set "05_teleport" to 64
+           set "04_teleport" to 2 
+		Set state to 0
+	endif
+endif
+
+end
