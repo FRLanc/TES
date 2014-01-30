@@ -1,0 +1,110 @@
+begin CharGenNameNPC
+
+;this is the prisoner who asks you you're name
+
+short state
+float timer
+short wandering
+short button
+
+if ( menumode == 1)
+	return
+endif
+
+if ( OnActivate == 1 )
+	return
+endif
+
+If ( State == -50 )
+	set state to -70
+	messagebox "Вы хотите пропустить начало?" "Да" "Нет"
+	set button to GetButtonPressed
+	elseif ( button == 0 )
+		player->positioncell -10203, -71509, 328, 0, "Seyda Neen"
+		enableplayercontrols
+		enabpleplayerjumping
+		enable tratata all what you can enable
+		
+		
+		
+		
+		
+		set state to -1
+	elseif ( button == 1 )
+		set state to 10
+		set button to 0
+	endif
+endif
+
+;done, standing
+if  ( state == -1 )
+	if  ( GetDistance, Player < 150 )				
+			set timer to timer + GetSecondsPassed
+			if ( timer > 14 )
+				set timer to 0
+					say, "vo\Misc\CharGenName4.wav", "Вам лучше сделать, как они говорят."
+			endif
+	endif
+endif
+
+if ( wandering == 0 )
+	if ( GetDistance, Player > 500 )
+		if ( state == -1 )
+			;AIWander 32 0 0 75 20 20 
+			set wandering to 1
+		endif
+	endif
+endif
+
+	if ( state == 0 )
+
+		set timer to ( timer + Getsecondspassed )
+
+		if ( timer >= 1 )		;fader delay
+			;he asks if you are ok
+			Say, "Vo\Misc\CharGenName1.wav", "Стой, куда ты? Ну ты и соня. Как тебя зовут?"
+			set State to -50
+			set timer to 0
+		endif
+
+	;show name menu when done talking
+	elseif  ( State == 10 );=================================
+		
+		if ( SayDone == 1 )		
+			EnableNameMenu
+			set State to 20
+		endif
+
+	;name is entered, guy says we're there
+	elseif ( State == 20 )
+		
+		set timer to ( timer + Getsecondspassed )
+
+		if ( timer >= 1 )		;delay
+			;he asks if you are ok
+			Say, "vo\Misc\CharGenName2.wav", "Ну, тебя даже вчерашний шторм не разбудил. Говорят, мы уже приплыли в Морроувинд. Нас выпустят, это точно."
+			set State to 40
+			set timer to 0
+		endif
+				
+	;says the guard is coming when he gets close
+	elseif ( State == 40 )
+
+		if ( SayDone == 1 )	
+			if ( GetDistance, "CharGen Boat Guard 2" <= 400 )
+				;PlayGroup idle3 1				
+				Say, "vo\Misc\CharGenName3.wav", "Тихо, стражник идет."
+				set State to -1
+				set timer to 5	;force him to say next line a little earlier
+			endif
+		endif
+
+	endif
+
+
+
+end CharGenNameNPC
+
+
+
+
