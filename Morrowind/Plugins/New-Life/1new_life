@@ -1,0 +1,39 @@
+begin 1new_life
+
+short state
+short button
+
+If ( OnActivate == 1 )
+	if ( state == 0 )
+		messagebox "Продолжить" "Вперед"
+
+		EnableRaceMenu
+		set state to 10
+	endif
+endif
+
+if ( MenuMode == 0 )
+	if ( state == 10 )
+		messagebox "Продолжить" "Вперед"
+		EnableClassMenu
+		set state to 20
+	endif
+endif
+
+if ( MenuMode == 0 )
+	if ( state == 20 )
+		messagebox "Продолжить" "Вперед"
+		EnableBirthMenu
+		set state to 30
+	endif
+endif
+
+if ( MenuMode == 0 )
+	if ( state == 30 )
+		messagebox "Продолжить" "Вперед"
+		EnableStatReviewMenu
+		set state to 0
+	endif
+endif
+
+end
