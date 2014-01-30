@@ -1,0 +1,10 @@
+begin 1look_inside_ghost_02
+
+if  ( "1_look_inside_level" <= 20 )
+  enable
+else
+  disable
+endif
+endif
+end
+
