@@ -10,6 +10,7 @@ if ( state == 0 )
 		set "1_look_inside_level" to ( "1_look_inside_level" + 1 )
 		set x to ( player->GetAngle, X )
 		set y to ( player->GetAngle, Y )
+		set "1look_inside_get_teleported" to 1
 		player->position 6016, 3008, 14256, x, y
 	else
 		 set state to 0
