@@ -8,8 +8,8 @@ if ( state == 0 )
 	if ( GetStandingPC == 1 )
 		set state to 1
 		set "1_look_inside_level" to ( "1_look_inside_level" + 1 )
-		set x to ( player->GetStartingAngle, X )
-		set y to ( player->GetStartingAngle, Y )
+		set x to ( player->GetAngle, X )
+		set y to ( player->GetAngle, Y )
 		player->position 6016, 3008, 14256, x, y
 	else
 		 set state to 0
