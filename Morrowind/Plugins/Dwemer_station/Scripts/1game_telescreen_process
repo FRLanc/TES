@@ -4,27 +4,20 @@ short state
 short do
 float timer
 
-if ( menumode == 1 )
+if ( MenuMode == 1 )
   return
 endif
 
 if ( OnActivate == 1 )
   if ( "1game_select" >= 1 )
-  set state to 1
+    set state to 1
   endif
 endif
 
 if ( OnActivate == 1 )
   if ( "1game_select" == 0 )
-  messagebox "Сначала выбирите точку телепортации"
-  return
-  endif
-endif
-
-if ( OnActivate == 1 )
-  if ( "02_generatorON" == 0 )
-    elseif ( "04_teleport" != 2 )
-  return
+    messagebox "Сначала выберите точку телепортации"
+    return
   endif
 endif
 
@@ -38,7 +31,10 @@ if ( state == 1 )
     set state to 2
     set timer to 1000
   elseif ( timer < 3 ) 
-    "01_light_02"->moveworld z -2
+    "ogject"->moveworld z -2
+    some animation here
+  elseif ( PcCellChanged == 0 )
+    someobject->setatstart
   endif
 endif
 
@@ -617,12 +613,6 @@ if ( state == 2 )
     set "1game_select" to 0
   endif 
 endif 
-
-if ( state == 50 )
-
-    endif
-  endif
-endif
 
 end
 
