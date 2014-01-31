@@ -6,7 +6,7 @@ endif
 
 if ( "1game_alch_menu" == 1 )
 	Set "1game_alch_menu" to 0
-	    StartScript "1game_alch_remove"
+	StartScript "1game_alch_remove"
 endif
 
 if ( OnActivate == 1 )
