@@ -7,11 +7,11 @@ endif
 set "1game_alch_menu" to 1
 
       if ( "1game_alch_state" == 1 )
-            Player->AddItem "1game_alch_alembic" 1
-            Player->AddItem "1game_alch_calcinator" 1
-            Player->AddItem "1game_alch_retorta" 1
-            Player->AddItem "1game_alch_mortarpesle" 1
-            Player->Equip "1game_alch_mortarpesle"
+            Player->AddItem "apparatus_g_alembic_01" 1
+            Player->AddItem "apparatus_g_calcinator_01" 1
+            Player->AddItem "apparatus_g_retort_01" 1
+            Player->AddItem "apparatus_g_mortar_01" 1
+            Player->Equip "apparatus_g_mortar_01"
 endif
 
 StopSound "Item Misc Up"
