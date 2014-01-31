@@ -11,8 +11,13 @@ endif
 
 if ( OnActivate == 1 )
 	if ( GetPCSneaking == 1 )
+		messagebox "Невозможно активировать сидя"
 		return
-	elseif ( Player->GetEffect, sEffectTelekinesis == 1 )	
+	elseif ( Player->GetEffect, sEffectTelekinesis == 1 )
+		messagebox "Невозможно активировать телекинезом"
+		return
+	elseif ( "1game_energy" == 0 )
+		messagebox "Ничего не происходит, кажется, требуется питание"
 		return
 	else
 		set "1game_alch_state" to 1
