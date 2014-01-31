@@ -12,11 +12,11 @@ endif
 if ( OnActivate == 1 )
 	if ( GetPCSneaking == 1 )
 		return
-elseif ( Player->GetEffect, sEffectTelekinesis == 1 )	
+	elseif ( Player->GetEffect, sEffectTelekinesis == 1 )	
 		return
-else
-	  set "1game_alch_state" to 1
-    PlaySound "alteration hit"
+	else
+		set "1game_alch_state" to 1
+		PlaySound "alteration hit"
 		StartScript "1game_alch_adding"
 	endif
 endif
