@@ -19,16 +19,11 @@ If ( State == -50 )
 	set state to -70
 	messagebox "Вы хотите пропустить начало?" "Да" "Нет"
 	set button to GetButtonPressed
-	elseif ( button == 0 )
+	if ( button == 0 )
 		player->positioncell -10203, -71509, 328, 0, "Seyda Neen"
 		enableplayercontrols
 		enabpleplayerjumping
 		enable tratata all what you can enable
-		
-		
-		
-		
-		
 		set state to -1
 	elseif ( button == 1 )
 		set state to 10
